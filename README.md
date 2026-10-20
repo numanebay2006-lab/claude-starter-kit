@@ -44,7 +44,21 @@ The installer:
   are backed up as `*.bak-<date>`);
 - copies the marketplace to `~/.claude/student-kit/marketplace`;
 - registers it in `~/.claude/settings.json` (backed up first) and enables all 42
-  plugins. Your other settings are kept.
+  plugins. Your other settings are kept;
+- `install.sh` also installs the 42 plugins with the `claude` CLI. Enabling a plugin in
+  `settings.json` does not install it.
+
+### Claude Code on the web
+
+Cloud sessions start in a fresh container, so install the kit from the environment's
+**Setup script** (cloud environment menu in the session title bar → Edit):
+
+```bash
+git clone --depth 1 https://github.com/numanebay2006-lab/claude-starter-kit /tmp/kit && bash /tmp/kit/install.sh
+```
+
+It adds about a minute to each session start. The clone needs no login while this repo is
+public.
 
 **Too many skills?** With 599 skills loaded, each session spends more context listing
 them. Turn off plugins you don't need with `/plugin`, or by setting them to `false` under
