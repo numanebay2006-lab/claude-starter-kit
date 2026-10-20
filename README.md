@@ -54,7 +54,7 @@ Cloud sessions start in a fresh container, so install the kit from the environme
 **Setup script** (cloud environment menu in the session title bar → Edit):
 
 ```bash
-git clone --depth 1 https://github.com/numanebay2006-lab/claude-starter-kit /tmp/kit && bash /tmp/kit/install.sh
+K=$(mktemp -d) && git clone --depth 1 https://github.com/numanebay2006-lab/claude-starter-kit "$K" && bash "$K/install.sh"
 ```
 
 It adds about a minute to each session start. The clone needs no login while this repo is
