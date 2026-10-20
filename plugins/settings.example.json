@@ -1,0 +1,54 @@
+{
+  "enabledPlugins": {
+    "agent-sdk-dev@student-kit": true,
+    "claude-code-setup@student-kit": true,
+    "claude-md-management@student-kit": true,
+    "claude-security@student-kit": true,
+    "code-modernization@student-kit": true,
+    "code-review@student-kit": true,
+    "code-simplifier@student-kit": true,
+    "commit-commands@student-kit": true,
+    "cwc-makers@student-kit": true,
+    "explanatory-output-style@student-kit": true,
+    "feature-dev@student-kit": true,
+    "frontend-design@student-kit": true,
+    "hookify@student-kit": true,
+    "learning-output-style@student-kit": true,
+    "math-olympiad@student-kit": true,
+    "mcp-server-dev@student-kit": true,
+    "mcp-tunnels@student-kit": true,
+    "playground@student-kit": true,
+    "plugin-dev@student-kit": true,
+    "pr-review-toolkit@student-kit": true,
+    "project-artifact@student-kit": true,
+    "ralph-loop@student-kit": true,
+    "skill-creator@student-kit": true,
+    "ecc@student-kit": true,
+    "pdf-viewer@student-kit": true,
+    "legal@student-kit": true,
+    "productivity@student-kit": true,
+    "customer-support@student-kit": true,
+    "small-business@student-kit": true,
+    "brand-voice@student-kit": true,
+    "operations@student-kit": true,
+    "product-management@student-kit": true,
+    "human-resources@student-kit": true,
+    "bio-research@student-kit": true,
+    "marketing@student-kit": true,
+    "engineering@student-kit": true,
+    "finance@student-kit": true,
+    "sales@student-kit": true,
+    "data@student-kit": true,
+    "enterprise-search@student-kit": true,
+    "design@student-kit": true,
+    "account-skills@student-kit": true
+  },
+  "extraKnownMarketplaces": {
+    "student-kit": {
+      "source": {
+        "source": "directory",
+        "path": "<HOME>/.claude/student-kit/marketplace"
+      }
+    }
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "name": "student-kit",
+  "owner": {
+    "name": "Starter Kit"
+  },
+  "plugins": [
+    {
+      "name": "agent-sdk-dev",
+      "source": "./plugins/agent-sdk-dev",
+      "description": "Claude Agent SDK Development Plugin"
+    },
+    {
+      "name": "claude-code-setup",
+      "source": "./plugins/claude-code-setup",
+      "description": "Analyze codebases and recommend tailored Claude Code automations such as hooks, skills, MCP servers, and subagents."
+    },
+    {
+      "name": "claude-md-management",
+      "source": "./plugins/claude-md-management",
+      "description": "Tools to maintain and improve CLAUDE.md files - audit quality, capture session learnings, and keep project memory current."
+    },
+    {
+      "name": "claude-security",
+      "source": "./plugins/claude-security",
+      "description": "Deep vulnerability scanning of your own code, run entirely inside your Claude Code session at a chosen effort tier, with every finding challenged before it is reported and the verification tally computed in code. Turns surviving findings into targeted patches, each verified by a panel of agents, that you apply when you choose. See the plugin README for the tiers, the report format, and the trust model."
+    },
+    {
+      "name": "code-modernization",
+      "source": "./plugins/code-modernization",
+      "description": "Modernize legacy codebases (COBOL, legacy Java/C++/.NET, monolith web apps) with a structured preflight / assess / map / extract-rules / brief / (reimagine | transform | uplift) / harden / status workflow. Cross-stack rewrites, greenfield reimagining, and same-stack version uplifts (e.g. .NET Framework \u2192 .NET 8); an interactive topology viewer; specialist agents; and optional dynamic-workflow orchestration with adversarial verification."
+    },
+    {
+      "name": "code-review",
+      "source": "./plugins/code-review",
+      "description": "Automated code review for pull requests using multiple specialized agents with confidence-based scoring"
+    },
+    {
+      "name": "code-simplifier",
+      "source": "./plugins/code-simplifier",
+      "description": "Agent that simplifies and refines code for clarity, consistency, and maintainability while preserving functionality"
+    },
+    {
+      "name": "commit-commands",
+      "source": "./plugins/commit-commands",
+      "description": "Streamline your git workflow with simple commands for committing, pushing, and creating pull requests"
+    },
+    {
+      "name": "cwc-makers",
+      "source": "./plugins/cwc-makers",
+      "description": "Seamless onboarding for the Code-with-Claude Makers Cardputer: one /maker-setup command clones the build-with-claude repo, flashes UIFlow firmware, and installs the Claude Buddy app bundle onto a freshly-plugged-in M5Stack Cardputer-Adv."
+    },
+    {
+      "name": "explanatory-output-style",
+      "source": "./plugins/explanatory-output-style",
+      "description": "Adds educational insights about implementation choices and codebase patterns (mimics the deprecated Explanatory output style)"
+    },
+    {
+      "name": "feature-dev",
+      "source": "./plugins/feature-dev",
+      "description": "Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review"
+    },
+    {
+      "name": "frontend-design",
+      "source": "./plugins/frontend-design",
+      "description": "Frontend design skill for UI/UX implementation"
+    },
+    {
+      "name": "hookify",
+      "source": "./plugins/hookify",
+      "description": "Easily create hooks to prevent unwanted behaviors by analyzing conversation patterns"
+    },
+    {
+      "name": "learning-output-style",
+      "source": "./plugins/learning-output-style",
+      "description": "Interactive learning mode that requests meaningful code contributions at decision points (mimics the unshipped Learning output style)"
+    },
+    {
+      "name": "math-olympiad",
+      "source": "./plugins/math-olympiad",
+      "description": "Solve competition math (IMO, Putnam, USAMO) with adversarial verification that catches what self-verification misses. Fresh-context verifiers attack proofs with specific failure patterns. Calibrated abstention over bluffing."
+    },
+    {
+      "name": "mcp-server-dev",
+      "source": "./plugins/mcp-server-dev",
+      "description": "Skills for designing and building MCP servers that work seamlessly with Claude \u2014 guides you through deployment models (remote HTTP, MCPB, local), tool design patterns, auth, and interactive MCP apps."
+    },
+    {
+      "name": "mcp-tunnels",
+      "source": "./plugins/mcp-tunnels",
+      "description": "Connect Claude to a private MCP server through an Anthropic MCP tunnel. Drives the Docker Compose quickstart end to end: certificates, proxy config, cloudflared, and a verifiable sample server."
+    },
+    {
+      "name": "playground",
+      "source": "./plugins/playground",
+      "description": "Creates interactive HTML playgrounds \u2014 self-contained single-file explorers with visual controls, live preview, and prompt output with copy button"
+    },
+    {
+      "name": "plugin-dev",
+      "source": "./plugins/plugin-dev",
+      "description": "Plugin development toolkit with skills for creating agents, commands, hooks, MCP integrations, and comprehensive plugin structure guidance"
+    },
+    {
+      "name": "pr-review-toolkit",
+      "source": "./plugins/pr-review-toolkit",
+      "description": "Comprehensive PR review agents specializing in comments, tests, error handling, type design, code quality, and code simplification"
+    },
+    {
+      "name": "project-artifact",
+      "source": "./plugins/project-artifact",
+      "description": "Generate and publish a project status artifact \u2014 an opinionated, tabbed status page (overview & success criteria, the workstream sequence, next steps, plus background / plan / risks & open questions / decisions-FAQ when they earn a tab) published via the built-in Artifact tool to a default-private claude.ai page the user can share with teammates. Each artifact is backed by a per-project config, so 'refresh the artifact' re-gathers live state, redeploys the same URL, and reports only the delta. Domain-neutral, with a software specialization for projects whose workstreams are pull requests. Needs the built-in Artifact tool (claude.ai login)."
+    },
+    {
+      "name": "ralph-loop",
+      "source": "./plugins/ralph-loop",
+      "description": "Continuous self-referential AI loops for interactive iterative development, implementing the Ralph Wiggum technique. Run Claude in a while-true loop with the same prompt until task completion."
+    },
+    {
+      "name": "skill-creator",
+      "source": "./plugins/skill-creator",
+      "description": "Create new skills, improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, update or optimize an existing skill, run evals to test a skill, or benchmark skill performance with variance analysis."
+    },
+    {
+      "name": "ecc",
+      "source": "./plugins/ecc",
+      "description": "ECC (github.com/affaan-m/ECC, MIT): 292 skills, 68 agents, command shims. Hooks not included."
+    },
+    {
+      "name": "pdf-viewer",
+      "source": "./plugins/pdf-viewer",
+      "description": "View, annotate, and sign PDFs in a live interactive viewer. Mark up contracts, fill forms with visual feedback, stamp approvals, and place signatures \u2014 then download the annotated copy."
+    },
+    {
+      "name": "legal",
+      "source": "./plugins/legal",
+      "description": "Speed up contract review, NDA triage, and compliance workflows for in-house legal teams. Draft legal briefs, organize precedent research, and manage institutional knowledge."
+    },
+    {
+      "name": "productivity",
+      "source": "./plugins/productivity",
+      "description": "Manage tasks, plan your day, and build up memory of important context about your work. Syncs with your calendar, email, and chat to keep everything organized and on track."
+    },
+    {
+      "name": "customer-support",
+      "source": "./plugins/customer-support",
+      "description": "Triage tickets, draft responses, escalate issues, and build your knowledge base. Research customer context and turn resolved issues into self-service content."
+    },
+    {
+      "name": "small-business",
+      "source": "./plugins/small-business",
+      "description": "Pre-built small business workflows to help you run and grow your business. Supports a majority of the tools you already use. You approve every step that touches money or customers. Install and then ask Claude to help you get onboarded."
+    },
+    {
+      "name": "brand-voice",
+      "source": "./plugins/brand-voice",
+      "description": "Brand Voice transforms scattered brand materials into enforceable AI guardrails \u2014 automatically. It searches across Notion, Google Drive, Confluence, Gong, Slack, and meeting transcripts to distill your strongest brand signals into a single source of truth, then applies them to every piece of AI-generated content. The more your team creates with Claude, the more consistent your brand becomes."
+    },
+    {
+      "name": "operations",
+      "source": "./plugins/operations",
+      "description": "Optimize business operations \u2014 vendor management, process documentation, change management, capacity planning, and compliance tracking. Keep your organization running efficiently."
+    },
+    {
+      "name": "product-management",
+      "source": "./plugins/product-management",
+      "description": "Write feature specs, plan roadmaps, and synthesize user research faster. Keep stakeholders updated and stay ahead of the competitive landscape."
+    },
+    {
+      "name": "human-resources",
+      "source": "./plugins/human-resources",
+      "description": "Streamline people operations \u2014 recruiting, onboarding, performance reviews, compensation analysis, and policy guidance. Maintain compliance and keep your team running smoothly."
+    },
+    {
+      "name": "bio-research",
+      "source": "./plugins/bio-research",
+      "description": "Connect to preclinical research tools and databases (literature search, genomics analysis, target prioritization) to accelerate early-stage life sciences R&D"
+    },
+    {
+      "name": "marketing",
+      "source": "./plugins/marketing",
+      "description": "Create content, plan campaigns, and analyze performance across marketing channels. Maintain brand voice consistency, track competitors, and report on what's working."
+    },
+    {
+      "name": "engineering",
+      "source": "./plugins/engineering",
+      "description": "Streamline engineering workflows \u2014 standups, code review, architecture decisions, incident response, and technical documentation. Works with your existing tools or standalone."
+    },
+    {
+      "name": "finance",
+      "source": "./plugins/finance",
+      "description": "Streamline finance and accounting workflows, from journal entries and reconciliation to financial statements and variance analysis. Speed up audit prep, month-end close, and keeping your books clean."
+    },
+    {
+      "name": "sales",
+      "source": "./plugins/sales",
+      "description": "Sales skills that work with the tools your team already uses - your CRM, email, calendar, chat and call recorder - or with uploaded files. Prep calls, summarize and follow up, research accounts, review deals and pipeline, and write the forecast. When you ask, it can update CRM records, create email drafts or send email, post to chat and book meetings through your connected tools."
+    },
+    {
+      "name": "data",
+      "source": "./plugins/data",
+      "description": "Write SQL, explore datasets, and generate insights faster. Build visualizations and dashboards, and turn raw data into clear stories for stakeholders."
+    },
+    {
+      "name": "enterprise-search",
+      "source": "./plugins/enterprise-search",
+      "description": "Search across all of your company's tools in one place. Find anything across email, chat, documents, and wikis without switching between apps."
+    },
+    {
+      "name": "design",
+      "source": "./plugins/design",
+      "description": "Accelerate design workflows \u2014 critique, design system management, UX writing, accessibility audits, research synthesis, and dev handoff. From exploration to pixel-perfect specs."
+    },
+    {
+      "name": "account-skills",
+      "source": "./plugins/account-skills",
+      "description": "Open-licence skills from the claude.ai account (art, design, comms, MCP builder, Seedance reels)."
+    }
+  ]
+}

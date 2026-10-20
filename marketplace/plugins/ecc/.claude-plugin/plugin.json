@@ -1,0 +1,6 @@
+{
+  "name": "ecc",
+  "version": "2.2.2",
+  "description": "ECC (github.com/affaan-m/ECC, MIT): 292 skills, 68 agents, command shims. Hooks not included.",
+  "license": "MIT"
+}
