@@ -1,7 +1,7 @@
 085f036079bb785cbefd617d559ab0f9 23587 assets/pp-base.css
 75c7ff78804ebd30849070ff75bd84ca 14557 assets/pp-cart.js
 cdf2b88e4318070bb920fab0b77bb6e7 433 assets/pp-favicon.svg
-903f00622c3c121c9c143e1d9b35641f 7717 assets/pp-game.js
+81fde964bb6da76220f48231cd878b9a 7718 assets/pp-game.js
 2de054a32f0cd6416ed007ee758f1101 11580 assets/pp-home.css
 c084f25214aee332b5649951d4d50687 13832 assets/pp-product.css
 11c5e5fe1a4df5d969bed78e47a1201e 12967 assets/pp-product.js
@@ -18,7 +18,7 @@ e1e3d13010f0929e733837532fcc2037 1743 sections/pp-contact.liquid
 84800c7b8b9c60277610b4fd533a11f3 1661 sections/pp-faq.liquid
 e88b2eb54eb77b83668223fef76b88a0 1756 sections/pp-final.liquid
 e875720da4d417b3646c4a233818a85f 3427 sections/pp-footer.liquid
-5eee6d7765e0b1ec1b22382926246e73 6009 sections/pp-game.liquid
+5957da3e8723af55bc38d0524599e07a 6010 sections/pp-game.liquid
 123aac0aca917c6b28b51d6af6e69f58 3019 sections/pp-header.liquid
 083e7d424aaec4947c067b49336794cd 3762 sections/pp-hero.liquid
 1e826575c37dbf4739f2f181b221bda1 3324 sections/pp-occasions.liquid

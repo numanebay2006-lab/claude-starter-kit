@@ -9,8 +9,8 @@
   const live = game.querySelector('[data-live]');
   const mascot = player.querySelector('[data-pp-mascot]');
   const CODE = game.dataset.code;
-  const GOAL = Number(game.dataset.goal) || 8;
-  const SECONDS = Number(game.dataset.seconds) || 20;
+  const GOAL = Number(game.dataset.goal) || 10;
+  const SECONDS = Number(game.dataset.seconds) || 15;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const BONE = (gold) => `<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M10 8a5 5 0 0 1 8 4l10 10a5 5 0 1 1 2 8 5 5 0 1 1-8 2L12 22a5 5 0 1 1-4-8 5 5 0 0 1 2-6z" fill="${gold ? '#F2C14E' : '#FFF8E8'}" stroke="${gold ? '#9A6B00' : '#8A5A2B'}" stroke-width="2.5" stroke-linejoin="round"/></svg>`;
 
