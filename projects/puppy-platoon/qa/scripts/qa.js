@@ -1,0 +1,20 @@
+const { chromium } = require('playwright');
+const PREVIEW = 'preview_theme_id=188335325432';
+(async () => {
+  const [,, path, out, w, h, full] = process.argv;
+  const b = await chromium.launch();
+  const ctx = await b.newContext({ viewport: { width: +w, height: +h }, deviceScaleFactor: 1, locale: 'en-US' });
+  const p = await ctx.newPage();
+  const errs = [];
+  p.on('console', (m) => { if (m.type() === 'error') errs.push('console: ' + m.text().slice(0, 200)); });
+  p.on('pageerror', (e) => errs.push('pageerror: ' + e.message.slice(0, 200)));
+  const url = `https://er1tj9-rh.myshopify.com${path}${path.includes('?') ? '&' : '?'}${PREVIEW}`;
+  await p.goto(url, { waitUntil: 'networkidle', timeout: 60000 }).catch((e) => errs.push('goto ' + e.message));
+  await p.evaluate(() => { const bar = document.querySelector('#PBarNextFrameWrapper, #preview-bar-iframe'); if (bar) bar.remove(); document.querySelectorAll('.pp-reveal').forEach((e) => e.classList.add('is-in')); });
+  await p.waitForTimeout(800);
+  const liquid = await p.evaluate(() => (document.body.innerText.match(/Liquid (syntax )?error[^\n]*/gi) || []).slice(0, 5));
+  const overflow = await p.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1 ? `hscroll ${document.documentElement.scrollWidth}` : '');
+  await p.screenshot({ path: out, fullPage: full === 'full' });
+  console.log(JSON.stringify({ path, errs, liquid, overflow }));
+  await b.close();
+})();

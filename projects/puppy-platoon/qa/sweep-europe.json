@@ -1,0 +1,96 @@
+{
+ "GB": {
+  "available": true,
+  "sizes": "2XL:true L:true M:true S:true XL:true",
+  "price": 4200,
+  "currency": "USD",
+  "cookieLoc": "GB",
+  "htmlCountry": "GB",
+  "htmlCurrency": "USD",
+  "addStatus": 200,
+  "add": "OK price=4200 M / Puppy Soldier Clothes Suit",
+  "cartAfter": "1 items, total 4200 USD",
+  "cleared": true,
+  "pageTitle": "Mağazam"
+ },
+ "DE": {
+  "available": true,
+  "sizes": "2XL:true L:true M:true S:true XL:true",
+  "price": 4200,
+  "currency": "USD",
+  "cookieLoc": "DE",
+  "htmlCountry": "DE",
+  "htmlCurrency": "USD",
+  "addStatus": 200,
+  "add": "OK price=4200 M / Puppy Soldier Clothes Suit",
+  "cartAfter": "1 items, total 4200 USD",
+  "cleared": true,
+  "pageTitle": "Mağazam"
+ },
+ "FR": {
+  "available": true,
+  "sizes": "2XL:true L:true M:true S:true XL:true",
+  "price": 4200,
+  "currency": "USD",
+  "cookieLoc": "FR",
+  "htmlCountry": "FR",
+  "htmlCurrency": "USD",
+  "addStatus": 200,
+  "add": "OK price=4200 M / Puppy Soldier Clothes Suit",
+  "cartAfter": "1 items, total 4200 USD",
+  "cleared": true,
+  "pageTitle": "Mağazam"
+ },
+ "IT": {
+  "available": true,
+  "sizes": "2XL:true L:true M:true S:true XL:true",
+  "price": 4200,
+  "currency": "USD",
+  "cookieLoc": "IT",
+  "htmlCountry": "IT",
+  "htmlCurrency": "USD",
+  "addStatus": 200,
+  "add": "OK price=4200 M / Puppy Soldier Clothes Suit",
+  "cartAfter": "1 items, total 4200 USD",
+  "cleared": true,
+  "pageTitle": "Mağazam"
+ },
+ "ES": {
+  "available": true,
+  "sizes": "2XL:true L:true M:true S:true XL:true",
+  "price": 4200,
+  "currency": "USD",
+  "cookieLoc": "ES",
+  "htmlCountry": "ES",
+  "htmlCurrency": "USD",
+  "addStatus": 200,
+  "add": "OK price=4200 M / Puppy Soldier Clothes Suit",
+  "cartAfter": "1 items, total 4200 USD",
+  "cleared": true,
+  "pageTitle": "Mağazam"
+ },
+ "NL": {
+  "unknown": "non-json product: <!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\" />\n    <meta n",
+  "pageTitle": "Verifying your connection..."
+ },
+ "BE": {
+  "unknown": "non-json product: <!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\" />\n    <meta n",
+  "pageTitle": "Verifying your connection..."
+ },
+ "IE": {
+  "unknown": "non-json product: <!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\" />\n    <meta n",
+  "pageTitle": "Verifying your connection..."
+ },
+ "AT": {
+  "unknown": "non-json product: <!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\" />\n    <meta n",
+  "pageTitle": "Verifying your connection..."
+ },
+ "CH": {
+  "unknown": "non-json product: <!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\" />\n    <meta n",
+  "pageTitle": "Verifying your connection..."
+ },
+ "SE": {
+  "unknown": "non-json product: <!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\" />\n    <meta n",
+  "pageTitle": "Verifying your connection..."
+ }
+}
