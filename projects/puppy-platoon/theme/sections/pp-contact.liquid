@@ -1,0 +1,29 @@
+{{ 'pp-home.css' | asset_url | stylesheet_tag }}
+<section class="pp-page">
+  <div class="pp-wrap">
+    <p class="pp-eyebrow">Contact</p>
+    <h1 class="pp-h1">{{ page.title | default: 'Contact us' }}</h1>
+    <p class="pp-lead">Questions about sizing, an order or a return? Send us a message. We reply to every email{% if shop.email != blank %} at <a class="pp-link" href="mailto:{{ shop.email }}">{{ shop.email }}</a>{% endif %}.</p>
+    {%- if page.content != blank -%}<div class="pp-rte" style="margin-top:16px">{{ page.content }}</div>{%- endif -%}
+    {%- form 'contact', class: 'pp-contact' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="pp-note-ok" role="status">Thanks! Your message is on its way. We'll reply by email.</p>
+      {%- endif -%}
+      {%- if form.errors -%}
+        <p class="pp-err" role="alert">{{ form.errors | default_errors }}</p>
+      {%- endif -%}
+      <label for="pp-c-name">Your name</label>
+      <input id="pp-c-name" type="text" name="contact[name]" autocomplete="name" value="{{ form.name }}">
+      <label for="pp-c-email">Email</label>
+      <input id="pp-c-email" type="email" name="contact[email]" autocomplete="email" required value="{{ form.email }}">
+      <label for="pp-c-order">Order number (optional)</label>
+      <input id="pp-c-order" type="text" name="contact[order]" placeholder="#1001">
+      <label for="pp-c-msg">Message</label>
+      <textarea id="pp-c-msg" name="contact[body]" required placeholder="Tell us your dog's weight and breed if it's a sizing question.">{{ form.body }}</textarea>
+      <button type="submit" class="pp-btn">Send message</button>
+    {%- endform -%}
+  </div>
+</section>
+{% schema %}
+{ "name": "PP Contact", "settings": [] }
+{% endschema %}

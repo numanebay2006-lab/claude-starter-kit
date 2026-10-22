@@ -1,0 +1,69 @@
+<!doctype html>
+<html
+  class="no-js{% if request.design_mode %} shopify-design-mode{% endif %}"
+  lang="{{ request.locale.iso_code }}"
+  dir="{{ request.locale.direction | default: 'ltr' }}"
+>
+  <head>
+    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'pp-js');</script>
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- else -%}
+      <link rel="icon" type="image/svg+xml" href="{{ 'pp-favicon.svg' | asset_url }}">
+    {%- endif -%}
+
+    {%- render 'view-transition-opt-in' -%}
+    {%- render 'meta-tags' -%}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Lilita+One&display=swap">
+
+    {%- render 'stylesheets' -%}
+    {%- render 'card-hover-effect-styles' -%}
+    {%- render 'scripts' -%}
+    {%- render 'theme-styles-variables' -%}
+    {%- render 'color-palette' -%}
+    {{ 'pp-base.css' | asset_url | stylesheet_tag }}
+
+    {% if request.design_mode %}
+      {%- render 'theme-editor' -%}
+    {% endif %}
+
+    {%- render 'pp-config' -%}
+    {{ content_for_header }}
+  </head>
+
+  <body class="pp-theme page-width-{{ settings.page_width }} template-{{ template.name }}">
+    {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
+
+    <div class="page-wrapper">
+      <div id="header-group">
+        {% sections 'header-group' %}
+      </div>
+
+      <main
+        id="MainContent"
+        class="content-for-layout"
+        role="main"
+        data-template="{{ template }}"
+        tabindex="-1"
+      >
+        {{ content_for_layout }}
+      </main>
+
+      <footer>
+        {% sections 'footer-group' %}
+      </footer>
+    </div>
+
+    {% render 'pp-cart-drawer' %}
+
+    {% if settings.quick_add or settings.mobile_quick_add %}
+      {% render 'quick-add-modal' %}
+    {% endif %}
+
+    <script src="{{ 'pp-cart.js' | asset_url }}" defer></script>
+    <script src="{{ 'pp-ui.js' | asset_url }}" defer></script>
+  </body>
+</html>

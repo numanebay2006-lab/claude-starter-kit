@@ -1,0 +1,46 @@
+{{ 'pp-home.css' | asset_url | stylesheet_tag }}
+<section class="pp-section{% if section.settings.khaki %} pp-section--khaki{% endif %}" id="faq">
+  <div class="pp-wrap">
+    <div class="pp-head pp-head--center">
+      <p class="pp-eyebrow">FAQ</p>
+      <h2 class="pp-h2">{{ section.settings.heading }}</h2>
+    </div>
+    <div class="pp-faq">
+      {%- for block in section.blocks -%}
+        <details {{ block.shopify_attributes }}>
+          <summary>{{ block.settings.q }}</summary>
+          <div>{{ block.settings.a }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+    <p class="pp-center-cta" style="font-size:15px">Still have a question? <a class="pp-link" href="/pages/contact">Message us</a>. We reply to every email.</p>
+  </div>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for block in section.blocks -%}
+    { "@type": "Question", "name": {{ block.settings.q | json }}, "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.a | strip_html | json }} } }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+
+{% schema %}
+{
+  "name": "PP FAQ",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Questions from fellow dog parents" },
+    { "type": "checkbox", "id": "khaki", "label": "Khaki background", "default": false }
+  ],
+  "blocks": [
+    { "type": "qa", "name": "Question", "settings": [
+      { "type": "text", "id": "q", "label": "Question" },
+      { "type": "richtext", "id": "a", "label": "Answer" }
+    ] }
+  ],
+  "presets": [{ "name": "PP FAQ" }]
+}
+{% endschema %}

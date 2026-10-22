@@ -1,0 +1,41 @@
+{%- liquid
+  assign p = all_products['puppy-soldier-clothes-suit']
+  assign photo = p.featured_media
+  for m in p.media
+    if m.alt contains 'Louie'
+      assign photo = m
+    endif
+  endfor
+-%}
+{%- capture check -%}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L19 7"/></svg>{%- endcapture -%}
+{{ 'pp-home.css' | asset_url | stylesheet_tag }}
+<section class="pp-section pp-section--olive">
+  <div class="pp-wrap pp-final">
+    <div>
+      <p class="pp-eyebrow">Your pup's promotion is waiting</p>
+      <h2 class="pp-h2">{{ section.settings.heading }}</h2>
+      <p class="pp-lead">{{ p.price | money }} · Sizes S–2XL · Free shipping in 5–7 business days</p>
+      <p style="margin:24px 0 0"><a href="{{ p.url }}" class="pp-btn" data-pp-cta="final">{{ section.settings.button }}</a></p>
+      <ul class="pp-checks">
+        <li>{{ check }}30-day returns</li>
+        <li>{{ check }}Bundle savings up to 25%</li>
+        <li>{{ check }}Ships worldwide</li>
+      </ul>
+    </div>
+    <div class="pp-final__media" data-pp-salute-on-view>
+      {{ photo | image_url: width: 900 | image_tag: loading: 'lazy', widths: '450, 700, 900', sizes: '(min-width: 990px) 45vw, 100vw', alt: photo.alt }}
+      {% render 'pp-mascot', label: 'Sergeant Pup saluting' %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PP Final CTA",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Ready for the cutest salute on your street?" },
+    { "type": "text", "id": "button", "label": "Button", "default": "Enlist My Dog" }
+  ],
+  "presets": [{ "name": "PP Final CTA" }]
+}
+{% endschema %}

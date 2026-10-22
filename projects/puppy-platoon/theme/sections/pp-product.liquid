@@ -1,0 +1,295 @@
+{%- liquid
+  assign p = product
+  assign cur = p.selected_variant
+  assign base = p.price
+  assign t2 = base | times: 2 | times: 85 | divided_by: 100
+  assign t3 = base | times: 3 | times: 75 | divided_by: 100
+  assign o2 = base | times: 2
+  assign o3 = base | times: 3
+  assign s2 = o2 | minus: t2
+  assign s3 = o3 | minus: t3
+  assign e2 = t2 | divided_by: 2
+  assign e3 = t3 | divided_by: 3
+  assign media_count = 0
+-%}
+<section class="pp-pdp" data-pp-pdp id="pp-pdp-{{ section.id }}">
+  <div class="pp-wrap pp-pdp__grid">
+    {%- comment -%} Gallery {%- endcomment -%}
+    <div class="pp-gallery" data-pp-gallery>
+      <div class="pp-gallery__track" data-track tabindex="0" role="region" aria-label="Product photos, swipe for more">
+        {%- for m in p.media -%}
+          {%- if m.media_type != 'image' or media_count >= section.settings.max_media -%}{%- continue -%}{%- endif -%}
+          {%- assign media_count = media_count | plus: 1 -%}
+          <figure class="pp-gallery__slide" data-slide="{{ media_count }}">
+            {%- capture alt -%}{{ m.alt | default: p.title | escape }}{%- endcapture -%}
+            {%- if media_count == 1 -%}
+              {{ m | image_url: width: 1200 | image_tag: widths: '450, 600, 900, 1200', sizes: '(min-width: 990px) 56vw, 100vw', alt: alt, loading: 'eager', fetchpriority: 'high', data-zoom: true }}
+              <span class="pp-gallery__chip">Plush toy rifle · soft fabric</span>
+            {%- else -%}
+              {{ m | image_url: width: 1200 | image_tag: widths: '450, 600, 900, 1200', sizes: '(min-width: 990px) 56vw, 100vw', alt: alt, loading: 'lazy', data-zoom: true }}
+            {%- endif -%}
+            {%- if m.alt contains 'Milo' -%}<figcaption class="pp-tape">Milo · 6 lb Chihuahua · size S</figcaption>
+            {%- elsif m.alt contains 'Louie' -%}<figcaption class="pp-tape">Louie · 22 lb Frenchie · size M</figcaption>
+            {%- elsif m.alt contains 'Three' -%}<figcaption class="pp-tape">The whole squad, suited up</figcaption>
+            {%- endif -%}
+          </figure>
+        {%- endfor -%}
+      </div>
+      <span class="pp-gallery__count" aria-hidden="true"><span data-count>1</span> / {{ media_count }}</span>
+      <button type="button" class="pp-gallery__nav pp-gallery__nav--prev" data-prev aria-label="Previous photo"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button type="button" class="pp-gallery__nav pp-gallery__nav--next" data-next aria-label="Next photo"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="pp-gallery__thumbs" role="tablist" aria-label="Choose a photo">
+        {%- assign ti = 0 -%}
+        {%- for m in p.media -%}
+          {%- if m.media_type != 'image' or ti >= section.settings.max_media -%}{%- continue -%}{%- endif -%}
+          {%- assign ti = ti | plus: 1 -%}
+          <button type="button" class="pp-gallery__thumb{% if ti == 1 %} is-active{% endif %}" data-thumb="{{ ti }}" role="tab" aria-selected="{% if ti == 1 %}true{% else %}false{% endif %}" aria-label="Photo {{ ti }}">
+            {{ m | image_url: width: 160 | image_tag: alt: '', loading: 'lazy', width: 72, height: 72 }}
+          </button>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- comment -%} Buy box {%- endcomment -%}
+    <div class="pp-buy">
+      <p class="pp-eyebrow">{% render 'pp-logo-mark' %} Puppy Platoon · Dog costume</p>
+      <h1 class="pp-h1 pp-buy__title">{{ section.settings.heading | default: p.title }}</h1>
+      <p class="pp-buy__sub">{{ section.settings.subheading }}</p>
+
+      {%- assign rating = p.metafields.reviews.rating.value -%}
+      {%- assign rcount = p.metafields.reviews.rating_count.value | plus: 0 -%}
+      {%- if rating != blank and rcount > 0 -%}
+        <p class="pp-buy__rating"><span aria-hidden="true">★★★★★</span> {{ rating.rating | round: 1 }} ({{ rcount }} reviews)</p>
+      {%- else -%}
+        <p class="pp-buy__new"><span class="pp-tag pp-tag--gold">New drop</span> Be one of the first squads to wear it.</p>
+      {%- endif -%}
+
+      <div class="pp-price" aria-live="polite">
+        <span class="pp-price__now" data-pp-price>{{ base | money }}</span>
+        <s class="pp-price__was" data-pp-was hidden></s>
+        <span class="pp-tag pp-tag--red" data-pp-save hidden></span>
+      </div>
+      <p class="pp-buy__ship">Free shipping · 5–7 business days · Taxes calculated at checkout</p>
+
+      <ul class="pp-kit" aria-label="What's in the set">
+        <li><svg viewBox="0 0 24 24" class="pp-ico" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 15a8 8 0 0 1 16 0z"/><path d="M2 15h20"/></svg>Camo helmet + headset</li>
+        <li><svg viewBox="0 0 24 24" class="pp-ico" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M8 3 4 6v15h16V6l-4-3-4 3z"/><path d="M9 12h6"/></svg>Vest with flag patches</li>
+        <li><svg viewBox="0 0 24 24" class="pp-ico" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 15h13l3-3h2M7 15v4M13 15l1 3"/></svg>Plush arms + toy rifle</li>
+        <li><svg viewBox="0 0 24 24" class="pp-ico" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 3h12l1 18h-5l-2-10-2 10H5z"/></svg>Camo pants</li>
+      </ul>
+
+      <form action="{{ routes.cart_add_url }}" method="post" class="pp-form" data-pp-form>
+        <fieldset class="pp-sizes" data-pp-sizes-field>
+          <legend class="pp-legend"><span>Size: <b data-pp-size-label>{% if cur %}{{ cur.option1 }}{% else %}choose one{% endif %}</b></span>
+            <button type="button" class="pp-link pp-legend__guide" data-pp-open-guide>Size guide</button></legend>
+          <div class="pp-pills">
+            {%- for v in p.variants -%}
+              <label class="pp-pill{% unless v.available %} is-out{% endunless %}">
+                <input type="radio" name="id" value="{{ v.id }}" data-size="{{ v.option1 | escape }}" {% if cur and cur.id == v.id %}checked{% endif %} {% unless v.available %}disabled{% endunless %} {% if forloop.first %}required{% endif %}>
+                <span>{{ v.option1 }}{% unless v.available %}<em class="pp-sr">, sold out</em>{% endunless %}</span>
+              </label>
+            {%- endfor -%}
+          </div>
+          <p class="pp-hint" data-pp-hint aria-live="polite">Not sure? Milo (6 lb Chihuahua) wears S. Louie (22 lb Frenchie) wears M.</p>
+        </fieldset>
+
+        <details class="pp-finder" data-pp-finder>
+          <summary><svg viewBox="0 0 24 24" class="pp-ico" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 17 17 3l4 4L7 21H3z"/><path d="m7 13 2 2M10 10l2 2M13 7l2 2"/></svg> Find my size in 5 seconds</summary>
+          <div class="pp-finder__body">
+            <label class="pp-finder__label" for="pp-w-{{ section.id }}">Your dog's weight</label>
+            <div class="pp-finder__row">
+              <input id="pp-w-{{ section.id }}" type="number" inputmode="decimal" min="1" max="200" step="0.1" placeholder="e.g. 14" data-pp-weight>
+              <div class="pp-seg" role="radiogroup" aria-label="Unit">
+                <label><input type="radio" name="pp-unit-{{ section.id }}" value="lb" checked><span>lb</span></label>
+                <label><input type="radio" name="pp-unit-{{ section.id }}" value="kg"><span>kg</span></label>
+              </div>
+              <button type="button" class="pp-btn pp-btn--sm pp-btn--ghost" data-pp-find>Find</button>
+            </div>
+            <div data-pp-find-out aria-live="polite"></div>
+          </div>
+        </details>
+
+        <fieldset class="pp-bundles">
+          <legend class="pp-legend"><span>Pick your squad</span><span class="pp-legend__note">Mix sizes freely</span></legend>
+          <label class="pp-bundle">
+            <input type="radio" name="quantity" value="1" checked>
+            <span class="pp-bundle__main"><b>1 suit</b><small>Recruit</small></span>
+            <span class="pp-bundle__price"><b>{{ base | money }}</b></span>
+          </label>
+          <label class="pp-bundle">
+            <input type="radio" name="quantity" value="2">
+            <span class="pp-bundle__main"><b>2 suits <span class="pp-chip">Save {{ s2 | money }}</span></b><small>Battle Buddies · {{ e2 | money }} each. Two dogs, or one for a friend.</small></span>
+            <span class="pp-bundle__price"><b>{{ t2 | money }}</b><s><span class="pp-sr">Price if bought one at a time: </span>{{ o2 | money }}</s></span>
+          </label>
+          <label class="pp-bundle pp-bundle--best">
+            <span class="pp-bundle__ribbon">Best value</span>
+            <input type="radio" name="quantity" value="3">
+            <span class="pp-bundle__main"><b>3 suits <span class="pp-chip">Save {{ s3 | money }}</span></b><small>The Squad · {{ e3 | money }} each. Lowest price per suit.</small></span>
+            <span class="pp-bundle__price"><b>{{ t3 | money }}</b><s><span class="pp-sr">Price if bought one at a time: </span>{{ o3 | money }}</s></span>
+          </label>
+        </fieldset>
+
+        <div class="pp-extra" data-pp-extra hidden>
+          <p class="pp-extra__title">Sizes for your squad</p>
+          {%- for n in (2..3) -%}
+            <div class="pp-extra__row" data-pp-extra-row="{{ n }}" hidden>
+              <label for="pp-x{{ n }}-{{ section.id }}">Suit {{ n }}</label>
+              <select id="pp-x{{ n }}-{{ section.id }}" data-pp-extra-select>
+                {%- for v in p.variants -%}
+                  <option value="{{ v.id }}" {% unless v.available %}disabled{% endunless %}>Size {{ v.option1 }}{% unless v.available %} (sold out){% endunless %}</option>
+                {%- endfor -%}
+              </select>
+            </div>
+          {%- endfor -%}
+          <p class="pp-extra__note">Suit 1 uses the size you picked above. Savings apply automatically in your cart.</p>
+        </div>
+
+        <p class="pp-err" data-pp-err role="alert" tabindex="-1" hidden></p>
+        <button type="submit" class="pp-btn pp-btn--block pp-atc" data-pp-atc {% unless p.available %}disabled{% endunless %}>
+          {%- if p.available -%}Add to cart · {{ base | money }}{%- else -%}Sold out{%- endif -%}
+        </button>
+        <p class="pp-under">Bundle savings apply automatically. No code needed.</p>
+      </form>
+
+      <div class="pp-eta">
+        <svg viewBox="0 0 24 24" class="pp-ico" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
+        <div>
+          <p><b>Free delivery:</b> estimated <b data-pp-eta="5-7">in 5–7 business days</b></p>
+          <p class="pp-eta__sub">Need it sooner? Choose Express at checkout for $2.55.</p>
+        </div>
+      </div>
+
+      <ul class="pp-trust">
+        <li><svg viewBox="0 0 24 24" class="pp-ico" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>Free shipping</li>
+        <li><svg viewBox="0 0 24 24" class="pp-ico" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5"/></svg>30-day returns</li>
+        <li><svg viewBox="0 0 24 24" class="pp-ico" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Secure checkout</li>
+      </ul>
+
+      <div class="pp-sarge">
+        {% render 'pp-mascot', label: 'Sergeant Pup, the Puppy Platoon mascot' %}
+        <p class="pp-bubble-say" data-pp-say aria-live="polite">Pick a size, recruit!</p>
+      </div>
+
+      <a href="#pp-game" class="pp-gamelink">
+        <span aria-hidden="true">🦴</span> Play Treat Drill and win 10% off <span aria-hidden="true">↓</span>
+      </a>
+
+      <div class="pp-acc">
+        <details open>
+          <summary>What you get</summary>
+          <div>
+            <ul class="pp-ticks">
+              <li>Camo helmet with ear-muff headset and mic</li>
+              <li>Tan vest with US flag patches</li>
+              <li>Camo sleeves with two plush front arms</li>
+              <li>Plush toy rifle (soft fabric, not a real or replica weapon)</li>
+              <li>Camo pants</li>
+            </ul>
+            <p>Your dog stands and walks on its own four legs. The plush arms sit in front, so from the front it looks like your pup is standing on duty.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Size guide</summary>
+          <div>{% render 'pp-size-data', mode: 'table', product: p %}</div>
+        </details>
+        <details>
+          <summary>Shipping &amp; delivery</summary>
+          <div>
+            <ul class="pp-ticks">
+              <li><b>Free standard shipping</b> on every order: 5–7 business days.</li>
+              <li><b>Express shipping:</b> $2.55, priority processing and tracking. Choose it at checkout.</li>
+              <li>We ship to the United States and worldwide. You get a tracking link by email.</li>
+              <li><b>Package protection</b> ($3, optional) can be added in your cart. It covers loss, theft or damage in transit.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>Returns</summary>
+          <div><p>Not the right fit? You have 30 days from delivery to return an unworn suit in its original condition. Email us and we will help you swap sizes or get a refund. {% if shop.refund_policy %}<a class="pp-link" href="{{ shop.refund_policy.url }}">Full refund policy</a>{% endif %}</p></div>
+        </details>
+        <details>
+          <summary>Care &amp; safety</summary>
+          <div><p>Hand wash cold with mild soap and lay flat to dry. Do not tumble dry. Always supervise your dog while it wears a costume. Start with short try-ons and treats. Remove the helmet if your dog paws at it. Not a chew toy.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <dialog class="pp-dialog" data-pp-guide aria-labelledby="pp-guide-title-{{ section.id }}">
+    <div class="pp-dialog__head">
+      <h2 class="pp-h3" id="pp-guide-title-{{ section.id }}">Size guide</h2>
+      <button type="button" class="pp-iconbtn" data-pp-close-guide aria-label="Close size guide"><svg class="pp-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    {% render 'pp-size-data', mode: 'table', product: p %}
+    <p class="pp-table-note">Examples: Milo is a 6 lb Chihuahua and wears S. Louie is a 22 lb French Bulldog and wears M.</p>
+  </dialog>
+
+  <dialog class="pp-dialog pp-dialog--zoom" data-pp-zoom aria-label="Photo zoom">
+    <button type="button" class="pp-iconbtn pp-dialog__x" data-pp-close-zoom aria-label="Close photo"><svg class="pp-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <img src="" alt="" data-pp-zoom-img>
+  </dialog>
+
+  <aside class="pp-sticky" data-pp-sticky aria-label="Quick add to cart" inert>
+    <div class="pp-sticky__in">
+      {{ p.featured_image | image_url: width: 120 | image_tag: class: 'pp-sticky__img', alt: '', loading: 'lazy', width: 48, height: 48 }}
+      <div class="pp-sticky__info">
+        <span class="pp-sticky__title">{{ p.title }}</span>
+        <span class="pp-sticky__meta"><span data-pp-sticky-meta>Choose your size</span> · <b data-pp-sticky-price>{{ base | money }}</b></span>
+      </div>
+      <label class="pp-sr" for="pp-sticky-size-{{ section.id }}">Size</label>
+      <select id="pp-sticky-size-{{ section.id }}" data-pp-sticky-size>
+        <option value="">Size</option>
+        {%- for v in p.variants -%}
+          <option value="{{ v.id }}" {% unless v.available %}disabled{% endunless %}>{{ v.option1 }}</option>
+        {%- endfor -%}
+      </select>
+      <button type="button" class="pp-btn" data-pp-sticky-btn>Choose size</button>
+    </div>
+  </aside>
+
+  <script type="application/json" data-pp-variants>
+    [{%- for v in p.variants -%}{"id":{{ v.id }},"size":{{ v.option1 | json }},"available":{{ v.available | json }},"price":{{ v.price }}}{% unless forloop.last %},{% endunless %}{%- endfor -%}]
+  </script>
+  <script type="application/json" data-pp-sizes>{% render 'pp-size-data', mode: 'json', product: p %}</script>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": {{ p.title | json }},
+  "description": {{ p.description | strip_html | strip_newlines | truncate: 500 | json }},
+  "image": [{% for m in p.media limit: 5 %}{{ m | image_url: width: 1200 | prepend: 'https:' | json }}{% unless forloop.last %},{% endunless %}{% endfor %}],
+  "brand": { "@type": "Brand", "name": "Puppy Platoon" },
+  "sku": {{ p.selected_or_first_available_variant.sku | json }},
+  "offers": [
+    {%- for v in p.variants -%}
+    {
+      "@type": "Offer",
+      "name": {{ v.title | json }},
+      "sku": {{ v.sku | json }},
+      "price": {{ v.price | divided_by: 100.0 | json }},
+      "priceCurrency": {{ cart.currency.iso_code | json }},
+      "availability": "https://schema.org/{% if v.available %}InStock{% else %}OutOfStock{% endif %}",
+      "url": {{ request.origin | append: v.url | json }},
+      "shippingDetails": { "@type": "OfferShippingDetails", "shippingRate": { "@type": "MonetaryAmount", "value": 0, "currency": {{ cart.currency.iso_code | json }} }, "deliveryTime": { "@type": "ShippingDeliveryTime", "transitTime": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 7, "unitCode": "DAY" } } },
+      "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 30 }
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+
+{{ 'pp-product.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'pp-product.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "PP Product",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading (blank = product title)", "default": "Puppy Soldier Costume" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Your dog, standing on duty. A camo helmet, vest and plush arms that hold a soft toy rifle, all in one suit." },
+    { "type": "range", "id": "max_media", "label": "Max photos", "min": 3, "max": 10, "step": 1, "default": 6 }
+  ]
+}
+{% endschema %}

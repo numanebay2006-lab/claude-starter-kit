@@ -1,0 +1,47 @@
+{%- liquid
+  assign p = all_products['puppy-soldier-clothes-suit']
+  assign photo = p.featured_media
+  for m in p.media
+    if m.alt contains 'Milo'
+      assign photo = m
+    endif
+  endfor
+-%}
+{{ 'pp-home.css' | asset_url | stylesheet_tag }}
+<section class="pp-section pp-section--khaki" id="size-finder">
+  <div class="pp-wrap pp-sizer" data-pp-sizer>
+    <div class="pp-sizer__photo pp-reveal">
+      {{ photo | image_url: width: 900 | image_tag: loading: 'lazy', widths: '450, 700, 900', sizes: '(min-width: 990px) 50vw, 100vw', alt: photo.alt }}
+    </div>
+    <div class="pp-sizer__card pp-reveal">
+      <p class="pp-eyebrow">Size finder</p>
+      <h2 class="pp-h2">{{ section.settings.heading }}</h2>
+      <p class="pp-lead" style="font-size:16px">Sizes go from S (5 lb) to 2XL (90 lb). Enter your dog's weight and we'll pick the size from the official chart.</p>
+      <form novalidate>
+        <label class="pp-sizer__lbl" for="pp-sizer-w-{{ section.id }}">Your dog's weight</label>
+        <div class="pp-sizer__row">
+          <input id="pp-sizer-w-{{ section.id }}" name="weight" type="number" inputmode="decimal" min="1" max="200" step="0.1" placeholder="e.g. 14">
+          <div class="pp-seg" role="radiogroup" aria-label="Unit">
+            <label><input type="radio" name="unit" value="lb" checked><span>lb</span></label>
+            <label><input type="radio" name="unit" value="kg"><span>kg</span></label>
+          </div>
+        </div>
+        <button type="submit" class="pp-btn pp-btn--block">Find my size</button>
+        <p class="pp-sizer__examples">Milo, 6 lb Chihuahua → S · Louie, 22 lb French Bulldog → M</p>
+      </form>
+      <div data-pp-sizer-out aria-live="polite"></div>
+      <p style="margin:14px 0 0;font-size:14px"><a class="pp-link" href="/pages/size-guide">See the full size chart</a></p>
+    </div>
+    <script type="application/json" data-pp-sizes>{% render 'pp-size-data', mode: 'json', product: p %}</script>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PP Size finder",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Find your dog's size in 10 seconds" }
+  ],
+  "presets": [{ "name": "PP Size finder" }]
+}
+{% endschema %}

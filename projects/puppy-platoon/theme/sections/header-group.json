@@ -1,0 +1,21 @@
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "announce": {
+      "type": "pp-announcement",
+      "settings": {}
+    },
+    "header": {
+      "type": "pp-header",
+      "settings": {
+        "menu": "main-menu",
+        "shop_url": "/products/puppy-soldier-clothes-suit"
+      }
+    }
+  },
+  "order": [
+    "announce",
+    "header"
+  ]
+}

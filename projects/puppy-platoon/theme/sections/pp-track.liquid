@@ -1,0 +1,23 @@
+{{ 'pp-home.css' | asset_url | stylesheet_tag }}
+<section class="pp-page">
+  <div class="pp-wrap pp-rte">
+    <p class="pp-eyebrow">Order status</p>
+    <h1 class="pp-h1">{{ page.title | default: 'Track your order' }}</h1>
+    <p class="pp-lead">Every order ships with free tracking. Standard delivery takes 5–7 business days.</p>
+    <h2>Where is my tracking link?</h2>
+    <ul class="pp-ticks">
+      <li>When your order ships, we email you a shipping confirmation with a tracking link.</li>
+      <li>Open the order confirmation email and tap <b>View your order</b> to see live status at any time.</li>
+      <li>Can't find the email? Check your spam or promotions folder.</li>
+    </ul>
+    {%- if shop.customer_accounts_enabled -%}
+      <p><a class="pp-btn" href="{{ routes.account_url }}">Sign in to see your orders</a></p>
+    {%- endif -%}
+    <h2>Need help?</h2>
+    <p>Send us your order number and we'll check on it for you. <a class="pp-link" href="/pages/contact">Contact us</a></p>
+    {%- if page.content != blank -%}<div style="margin-top:16px">{{ page.content }}</div>{%- endif -%}
+  </div>
+</section>
+{% schema %}
+{ "name": "PP Track order", "settings": [] }
+{% endschema %}

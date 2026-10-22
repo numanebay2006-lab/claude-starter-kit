@@ -1,0 +1,44 @@
+{%- liquid
+  assign p = all_products['puppy-soldier-clothes-suit']
+  assign photo = nil
+  for m in p.media
+    if m.alt contains 'full soldier costume set'
+      assign photo = m
+    endif
+  endfor
+-%}
+{{ 'pp-home.css' | asset_url | stylesheet_tag }}
+<section class="pp-section" id="whats-inside">
+  <div class="pp-wrap">
+    <div class="pp-head pp-head--center pp-reveal">
+      <p class="pp-eyebrow">What you get</p>
+      <h2 class="pp-h2">{{ section.settings.heading }}</h2>
+      <p class="pp-lead">{{ section.settings.text }}</p>
+    </div>
+    <div class="pp-kitgrid pp-reveal">
+      <div class="pp-kitcard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 15a8 8 0 0 1 16 0z"/><path d="M2 15h20M7 15v3a2 2 0 0 0 2 2M17 15v3"/></svg><b>Camo helmet + headset</b><span>Ear-muff headset with a little mic. The detail everyone notices first.</span></div>
+      <div class="pp-kitcard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M8 3 4 6v15h16V6l-4-3-4 3z"/><path d="M9 12h6M9 16h6"/></svg><b>Vest with flag patches</b><span>Tan plate-carrier style vest with US flag patches.</span></div>
+      {%- if photo -%}
+        <div class="pp-kitcard pp-kitcard--photo">{{ photo | image_url: width: 900 | image_tag: loading: 'lazy', widths: '450, 700, 900', sizes: '(min-width: 990px) 33vw, 100vw', alt: 'The full costume set: helmet, vest, plush arms, plush toy rifle and pants' }}<span class="pp-tape">The full set</span></div>
+      {%- endif -%}
+      <div class="pp-kitcard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 9c0-2 2-3 3-3s2 1 2 3v8M15 9c0-2 2-3 3-3s2 1 2 3v8"/></svg><b>Plush front arms</b><span>Two soft stuffed arms that create the "standing up" look.</span></div>
+      <div class="pp-kitcard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 14h12l3-3h3M7 14v4M12 14l1 3"/></svg><b>Plush toy rifle</b><span>Soft stuffed fabric. Not a real or replica weapon.</span></div>
+    </div>
+    <ol class="pp-steps pp-reveal">
+      <li><span><b>Pick a size by weight</b><span>Use the size finder. Between sizes? Size up.</span></span></li>
+      <li><span><b>Dress your pup</b><span>Slip on the suit, close the straps, add the helmet.</span></span></li>
+      <li><span><b>Take the photo</b><span>Your feed just got a new recruit.</span></span></li>
+    </ol>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PP What's inside",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Everything in one set" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Your dog stands and walks on its own four legs. The plush arms sit in front, so from the front it looks like your pup is standing guard." }
+  ],
+  "presets": [{ "name": "PP What's inside" }]
+}
+{% endschema %}

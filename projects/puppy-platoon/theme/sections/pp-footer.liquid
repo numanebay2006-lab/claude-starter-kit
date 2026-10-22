@@ -1,0 +1,70 @@
+<div class="pp-footer">
+  <div class="pp-wrap">
+    <div class="pp-footer__grid">
+      <div class="pp-footer__brand">
+        <a href="{{ routes.root_url }}" class="pp-logo" aria-label="{{ shop.name | escape }} home">
+          {% render 'pp-logo-mark' %}
+          <span class="pp-logo__word">PUPPY <b>PLATOON</b></span>
+        </a>
+        <p class="pp-footer__about">{{ section.settings.about }}</p>
+        {%- if shop.email != blank -%}
+          <p style="margin:12px 0 0">Questions? <a href="mailto:{{ shop.email }}">{{ shop.email }}</a></p>
+        {%- endif -%}
+      </div>
+      {%- for i in (1..3) -%}
+        {%- assign mkey = 'menu_' | append: i -%}
+        {%- assign hkey = 'heading_' | append: i -%}
+        {%- assign menu = linklists[section.settings[mkey]] -%}
+        {%- if menu.links.size > 0 -%}
+          <div>
+            <h2>{{ section.settings[hkey] }}</h2>
+            <ul>
+              {%- for link in menu.links -%}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="pp-footer__bottom">
+      {%- if localization.available_countries.size > 1 -%}
+        {%- form 'localization', id: 'pp-loc', class: 'pp-loc' -%}
+          <label for="pp-country" class="pp-sr">Country</label>
+          <select id="pp-country" name="country_code" onchange="this.form.submit()">
+            {%- for c in localization.available_countries -%}
+              <option value="{{ c.iso_code }}"{% if c.iso_code == localization.country.iso_code %} selected{% endif %}>{{ c.name }} ({{ c.currency.iso_code }} {{ c.currency.symbol }})</option>
+            {%- endfor -%}
+          </select>
+          <input type="hidden" name="return_to" value="{{ request.path }}">
+          <noscript><button type="submit">Update</button></noscript>
+        {%- endform -%}
+      {%- endif -%}
+      <ul class="pp-pay" aria-label="Payment methods">
+        {%- for type in shop.enabled_payment_types -%}
+          <li>{{ type | payment_type_svg_tag }}</li>
+        {%- endfor -%}
+      </ul>
+      <span>© {{ 'now' | date: '%Y' }} {{ section.settings.brand }}</span>
+    </div>
+    <p class="pp-footer__legal">{{ section.settings.disclaimer }}</p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "PP Footer",
+  "settings": [
+    { "type": "text", "id": "brand", "label": "Brand name", "default": "Puppy Platoon" },
+    { "type": "textarea", "id": "about", "label": "About", "default": "Puppy Platoon makes a funny soldier costume for dogs. One product, made for big smiles and great photos. We reply to every email." },
+    { "type": "text", "id": "heading_1", "label": "Column 1 heading", "default": "Shop" },
+    { "type": "link_list", "id": "menu_1", "label": "Column 1 menu" },
+    { "type": "text", "id": "heading_2", "label": "Column 2 heading", "default": "Help" },
+    { "type": "link_list", "id": "menu_2", "label": "Column 2 menu" },
+    { "type": "text", "id": "heading_3", "label": "Column 3 heading", "default": "Policies" },
+    { "type": "link_list", "id": "menu_3", "label": "Column 3 menu" },
+    { "type": "textarea", "id": "disclaimer", "label": "Disclaimer", "default": "Novelty pet costume for photos and fun. The toy rifle is soft plush fabric, not a real or replica weapon. Not affiliated with or endorsed by any military organization." }
+  ]
+}
+{% endschema %}

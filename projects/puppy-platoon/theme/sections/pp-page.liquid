@@ -1,0 +1,10 @@
+{{ 'pp-home.css' | asset_url | stylesheet_tag }}
+<section class="pp-page">
+  <div class="pp-wrap">
+    <h1 class="pp-h1">{{ page.title }}</h1>
+    <div class="pp-rte" style="margin-top:20px">{{ page.content }}</div>
+  </div>
+</section>
+{% schema %}
+{ "name": "PP Page", "settings": [] }
+{% endschema %}

@@ -1,0 +1,63 @@
+{%- liquid
+  assign menu = linklists[section.settings.menu]
+-%}
+<header class="pp-header" id="pp-header">
+  <div class="pp-wrap pp-header__in">
+    <button type="button" class="pp-iconbtn pp-burger" data-pp-menu-open aria-label="Open menu" aria-controls="pp-menu" aria-expanded="false">
+      <svg class="pp-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+    </button>
+
+    <a href="{{ routes.root_url }}" class="pp-logo" aria-label="{{ shop.name | escape }} home">
+      {% render 'pp-logo-mark' %}
+      <span class="pp-logo__word">PUPPY <b>PLATOON</b></span>
+    </a>
+
+    <nav class="pp-nav" aria-label="Main">
+      {%- for link in menu.links -%}
+        <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+      {%- endfor -%}
+    </nav>
+
+    <div class="pp-header__actions">
+      <a href="{{ section.settings.shop_url | default: '/products/puppy-soldier-clothes-suit' }}" class="pp-btn pp-header__shop">Shop the Suit</a>
+      <a href="{{ routes.cart_url }}" class="pp-iconbtn" aria-label="Open cart" data-pp-open-cart>
+        <svg class="pp-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg>
+        <span class="pp-bubble" data-pp-count {% if cart.item_count == 0 %}hidden{% endif %}>{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="pp-menu" id="pp-menu" hidden>
+  <div class="pp-menu__scrim" data-pp-menu-close></div>
+  <div class="pp-menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="pp-menu__top">
+      <span class="pp-logo"><span class="pp-logo__word">PUPPY <b>PLATOON</b></span></span>
+      <button type="button" class="pp-iconbtn" data-pp-menu-close aria-label="Close menu">
+        <svg class="pp-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <ul class="pp-menu__links">
+      {%- for link in menu.links -%}
+        <li><a href="{{ link.url }}">{{ link.title }} <span aria-hidden="true">→</span></a></li>
+      {%- endfor -%}
+    </ul>
+    <a href="{{ section.settings.shop_url | default: '/products/puppy-soldier-clothes-suit' }}" class="pp-btn pp-btn--block" style="margin-top:24px">Shop the Suit</a>
+    <div class="pp-menu__foot">
+      <span>Free shipping · 5–7 business days</span>
+      <span>Express shipping · $2.55</span>
+      <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "PP Header",
+  "class": "pp-header-section",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "url", "id": "shop_url", "label": "Shop button link" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,28 @@
+{%- assign p = all_products['puppy-soldier-clothes-suit'] -%}
+{{ 'pp-home.css' | asset_url | stylesheet_tag }}
+{{ 'pp-product.css' | asset_url | stylesheet_tag }}
+<section class="pp-page">
+  <div class="pp-wrap">
+    <p class="pp-eyebrow">Fit check</p>
+    <h1 class="pp-h1">{{ page.title | default: 'Size guide' }}</h1>
+    <p class="pp-lead">Weigh your dog and measure around the widest part of the chest, right behind the front legs. Measure your dog, not the fur. If your dog is between two sizes, pick the larger one.</p>
+    <div style="margin-top:24px">{% render 'pp-size-data', mode: 'table', product: p %}</div>
+    {%- if page.content != blank -%}<div class="pp-rte" style="margin-top:24px">{{ page.content }}</div>{%- endif -%}
+    <div class="pp-rte">
+      <h2>How to measure</h2>
+      <ul class="pp-ticks">
+        <li><b>Weight:</b> weigh yourself holding your dog, then subtract your own weight.</li>
+        <li><b>Chest:</b> wrap a soft tape around the widest part of the rib cage, behind the front legs.</li>
+        <li><b>Neck:</b> measure where a collar sits.</li>
+        <li><b>Back:</b> from the base of the neck to the base of the tail.</li>
+      </ul>
+      <h2>Real examples</h2>
+      <p>Milo is a 6 lb Chihuahua and wears <b>S</b>. Louie is a 22 lb French Bulldog and wears <b>M</b>.</p>
+      <p>Still unsure? <a class="pp-link" href="/pages/contact">Send us your dog's weight and breed</a> and we'll tell you which size to pick.</p>
+    </div>
+    <p style="margin-top:24px"><a href="{{ p.url }}" class="pp-btn">Shop the Suit · {{ p.price | money }}</a></p>
+  </div>
+</section>
+{% schema %}
+{ "name": "PP Size guide page", "settings": [] }
+{% endschema %}

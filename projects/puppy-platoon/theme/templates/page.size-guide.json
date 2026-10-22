@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "pp-size-page",
+      "settings": {}
+    },
+    "sizer": {
+      "type": "pp-sizer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "sizer"
+  ]
+}

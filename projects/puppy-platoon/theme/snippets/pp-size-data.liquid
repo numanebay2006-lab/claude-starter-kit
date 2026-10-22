@@ -1,0 +1,34 @@
+{%- comment -%}
+  Size chart from the supplier (measure the dog, not the fur).
+  mode: 'json' outputs a JSON array for JS; 'table' outputs the HTML table.
+  product: the costume product (used to link each size to its variant).
+{%- endcomment -%}
+{%- liquid
+  assign rows = 'S|Small|5|12|14–17 in|10–12 in|9–12 in|Chihuahua, Yorkie, Maltese, Mini Dachshund;M|Medium|12|22|17–21 in|12–15 in|12–15 in|French Bulldog, Pug, Shih Tzu, Dachshund;L|Large|22|35|21–25 in|15–18 in|15–18 in|Corgi, Beagle, Cocker Spaniel;XL|X-Large|35|60|25–30 in|18–21 in|18–22 in|Bulldog, Border Collie, Pit Bull;2XL|XX-Large|55|90|29–34 in|21–24 in|22–27 in|Labrador, Golden Retriever, Boxer' | split: ';'
+-%}
+{%- if mode == 'json' -%}
+[
+  {%- for row in rows -%}
+    {%- assign c = row | split: '|' -%}
+    {%- assign vurl = product.url -%}
+    {%- assign vid = '' -%}
+    {%- for v in product.variants -%}
+      {%- if v.option1 == c[0] -%}{%- assign vurl = v.url -%}{%- assign vid = v.id -%}{%- endif -%}
+    {%- endfor -%}
+    {"label":{{ c[0] | json }},"name":{{ c[1] | json }},"min":{{ c[2] }},"max":{{ c[3] }},"chest":{{ c[4] | json }},"neck":{{ c[5] | json }},"back":{{ c[6] | json }},"breeds":{{ c[7] | json }},"url":{{ vurl | json }},"id":{{ vid | json }}}{% unless forloop.last %},{% endunless %}
+  {%- endfor -%}
+]
+{%- else -%}
+<div class="pp-table-wrap" tabindex="0" role="region" aria-label="Size chart">
+  <table class="pp-table">
+    <thead><tr><th scope="col">Size</th><th scope="col">Weight</th><th scope="col">Chest</th><th scope="col">Neck</th><th scope="col">Back</th><th scope="col">Typical breeds</th></tr></thead>
+    <tbody>
+      {%- for row in rows -%}
+        {%- assign c = row | split: '|' -%}
+        <tr><th scope="row">{{ c[0] }}</th><td>{{ c[2] }}–{{ c[3] }} lb</td><td>{{ c[4] }}</td><td>{{ c[5] }}</td><td>{{ c[6] }}</td><td>{{ c[7] }}</td></tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
+</div>
+<p class="pp-table-note">Measure your dog, not the fur. Chest = widest part behind the front legs. Back = base of neck to base of tail. Between sizes? Size up. Breeds are a rough guide only.</p>
+{%- endif -%}

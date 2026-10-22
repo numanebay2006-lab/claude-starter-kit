@@ -1,0 +1,61 @@
+{%- assign p = all_products['puppy-soldier-clothes-suit'] -%}
+{{ 'pp-home.css' | asset_url | stylesheet_tag }}
+<section class="pp-section">
+  <div class="pp-wrap">
+    <div class="pp-head pp-head--center pp-reveal">
+      <p class="pp-eyebrow">Ready for every mission</p>
+      <h2 class="pp-h2">{{ section.settings.heading }}</h2>
+    </div>
+    <ul class="pp-occ pp-reveal">
+      <li><span class="pp-occ__ico" aria-hidden="true">🎃</span><b>Halloween</b><span>The costume people ask about all night.</span></li>
+      <li><span class="pp-occ__ico" aria-hidden="true">🎆</span><b>4th of July</b><span>Flag patches already on the vest.</span></li>
+      <li><span class="pp-occ__ico" aria-hidden="true">🎂</span><b>Birthday photos</b><span>A party outfit for the birthday pup.</span></li>
+      <li><span class="pp-occ__ico" aria-hidden="true">🎄</span><b>Holiday cards</b><span>The family photo everyone will keep.</span></li>
+      <li><span class="pp-occ__ico" aria-hidden="true">📱</span><b>TikTok &amp; Reels</b><span>Easy content. Just press record.</span></li>
+      <li><span class="pp-occ__ico" aria-hidden="true">🎁</span><b>Gift for a dog lover</b><span>A present that gets a laugh first.</span></li>
+    </ul>
+    <p class="pp-season" data-pp-season hidden></p>
+    <p class="pp-center-cta"><a href="{{ p.url }}" class="pp-btn" data-pp-cta="occasions">Shop the Suit</a></p>
+  </div>
+</section>
+<script>
+  (() => {
+    // Honest seasonal note: compares today with real event dates, no countdown timers.
+    const el = document.querySelector('[data-pp-season]');
+    if (!el) return;
+    const now = new Date();
+    const y = now.getFullYear();
+    const addBiz = (d, n) => { const x = new Date(d); let a = 0; while (a < n) { x.setDate(x.getDate() + 1); if (x.getDay() % 6) a++; } return x; };
+    const latest = addBiz(now, 7);
+    const events = [
+      { name: 'Halloween', date: new Date(y, 9, 31) },
+      { name: 'Christmas', date: new Date(y, 11, 25) },
+      { name: 'the 4th of July', date: new Date(y, 6, 4) },
+      { name: 'Halloween', date: new Date(y + 1, 9, 31) },
+      { name: 'the 4th of July', date: new Date(y + 1, 6, 4) }
+    ].filter((e) => e.date > now).sort((a, b) => a.date - b.date);
+    const next = events[0];
+    if (!next) return;
+    const fmt = (d) => d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+    if (latest < next.date) {
+      let orderBy = new Date(next.date);
+      let n = 0;
+      while (n < 8) { orderBy.setDate(orderBy.getDate() - 1); if (orderBy.getDay() % 6) n++; }
+      if (orderBy >= now) el.textContent = `Planning for ${next.name}? Order by ${fmt(orderBy)} for estimated delivery in time with free shipping.`;
+      else el.textContent = `${next.name} is ${fmt(next.date)}. Order now: free shipping takes 5–7 business days.`;
+    } else {
+      el.textContent = `Heads up: ${next.name} is ${fmt(next.date)}. Free shipping takes 5–7 business days, so new orders may arrive after it. Still perfect for photos all season.`;
+    }
+    el.hidden = false;
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "PP Occasions",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Made for the moments you'll photograph" }
+  ],
+  "presets": [{ "name": "PP Occasions" }]
+}
+{% endschema %}

@@ -1,0 +1,38 @@
+{%- comment -%} Custom cart drawer. Filled and controlled by assets/pp-cart.js. {%- endcomment -%}
+<div id="pp-cart" class="pp-cart" role="dialog" aria-modal="true" aria-labelledby="pp-cart-title" hidden>
+  <button type="button" class="pp-cart__scrim" data-pp-close tabindex="-1" aria-label="Close cart"></button>
+  <div class="pp-cart__panel">
+    <div class="pp-cart__head">
+      <h2 id="pp-cart-title">Your Cart <span data-pp-title-count></span></h2>
+      <button type="button" class="pp-iconbtn pp-cart__close" data-pp-close aria-label="Close cart">
+        <svg class="pp-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="pp-cart__ship">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
+      <span>Free shipping on every order · 5–7 business days</span>
+    </div>
+    <p class="pp-cart__err" data-pp-error role="alert" hidden></p>
+    <div class="pp-cart__body" data-pp-body>
+      <div class="pp-empty"><p>Loading your cart…</p></div>
+    </div>
+    <div class="pp-cart__foot" data-pp-foot hidden>
+      <div data-pp-protect-slot></div>
+      <div class="pp-sum pp-sum--save" data-pp-savings hidden></div>
+      <div data-pp-codes></div>
+      <div class="pp-sum" data-pp-protect-line hidden></div>
+      <div class="pp-sum"><span>Shipping</span><b>Free (Express $2.55 at checkout)</b></div>
+      <div class="pp-sum pp-sum--total"><span>Total</span><b data-pp-total></b></div>
+      <form action="{{ routes.cart_url }}" method="post">
+        <button type="submit" name="checkout" class="pp-btn pp-btn--block" data-pp-checkout>Checkout</button>
+      </form>
+      <p class="pp-cart__note">Taxes calculated at checkout. 30-day returns.</p>
+      <div class="pp-cart__trust" aria-label="Checkout benefits">
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Secure checkout</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5"/></svg>Easy returns</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>Ships worldwide</span>
+      </div>
+    </div>
+  </div>
+</div>
+<template id="pp-mascot-tpl">{% render 'pp-mascot' %}</template>

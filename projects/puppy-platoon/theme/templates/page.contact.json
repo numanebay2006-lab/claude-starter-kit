@@ -1,0 +1,71 @@
+{
+  "sections": {
+    "main": {
+      "type": "pp-contact",
+      "settings": {}
+    },
+    "faq": {
+      "type": "pp-faq",
+      "blocks": {
+        "q1": {
+          "type": "qa",
+          "settings": {
+            "q": "Which size should I choose?",
+            "a": "<p>Weigh your dog and check the size chart: S fits 5–12 lb, M 12–22 lb, L 22–35 lb, XL 35–60 lb, 2XL 55–90 lb. Between sizes? Go one size up. Example: Milo is a 6 lb Chihuahua and wears S. Louie is a 22 lb French Bulldog and wears M.</p>"
+          }
+        },
+        "q2": {
+          "type": "qa",
+          "settings": {
+            "q": "Is the rifle real?",
+            "a": "<p>No. It is a plush toy rifle made of soft stuffed fabric. It is not a real or replica weapon.</p>"
+          }
+        },
+        "q3": {
+          "type": "qa",
+          "settings": {
+            "q": "Can my dog walk in it?",
+            "a": "<p>Yes. Your dog stands and walks on its own four legs. The plush arms sit in front to create the standing look. It is made for photos, parties and short wear, so keep sessions short and supervise your dog.</p>"
+          }
+        },
+        "q4": {
+          "type": "qa",
+          "settings": {
+            "q": "Is it comfortable?",
+            "a": "<p>The suit is soft polyester with adjustable closures. Start with a short try-on, lots of treats and praise. Take it off if your dog seems stressed.</p>"
+          }
+        },
+        "q5": {
+          "type": "qa",
+          "settings": {
+            "q": "How long does shipping take?",
+            "a": "<p>Free standard shipping on every order. Delivery takes 5–7 business days. You get a tracking link by email when your order ships.</p>"
+          }
+        },
+        "q6": {
+          "type": "qa",
+          "settings": {
+            "q": "Do you offer express shipping?",
+            "a": "<p>Yes. Choose Express at checkout for $2.55. It gets priority processing and tracking.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ],
+      "settings": {
+        "heading": "Quick answers",
+        "khaki": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "faq"
+  ]
+}

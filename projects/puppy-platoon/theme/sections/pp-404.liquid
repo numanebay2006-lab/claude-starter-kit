@@ -1,0 +1,13 @@
+{{ 'pp-home.css' | asset_url | stylesheet_tag }}
+<section class="pp-404">
+  <div class="pp-wrap" style="display:grid;justify-items:center;gap:14px">
+    {% render 'pp-mascot', label: 'Sergeant Pup looking for the page' %}
+    <h1 class="pp-h1">This page went AWOL.</h1>
+    <p class="pp-lead">Sergeant Pup searched everywhere. Let's get you back to base.</p>
+    <a href="/products/puppy-soldier-clothes-suit" class="pp-btn">Back to the suit</a>
+    <a href="{{ routes.root_url }}" class="pp-link">Home</a>
+  </div>
+</section>
+{% schema %}
+{ "name": "PP 404", "settings": [] }
+{% endschema %}

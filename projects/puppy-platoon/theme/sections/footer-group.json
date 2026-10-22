@@ -1,0 +1,17 @@
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer": {
+      "type": "pp-footer",
+      "settings": {
+        "menu_1": "footer-shop",
+        "menu_2": "footer-help",
+        "menu_3": "footer-policies"
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

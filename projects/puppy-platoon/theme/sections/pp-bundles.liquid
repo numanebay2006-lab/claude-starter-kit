@@ -1,0 +1,56 @@
+{%- liquid
+  assign p = all_products['puppy-soldier-clothes-suit']
+  assign base = p.price
+  assign t2 = base | times: 2 | times: 85 | divided_by: 100
+  assign t3 = base | times: 3 | times: 75 | divided_by: 100
+  assign o2 = base | times: 2
+  assign o3 = base | times: 3
+-%}
+{%- capture dog -%}<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="12" cy="15" rx="4.6" ry="3.8"/><ellipse cx="6.5" cy="9.5" rx="1.9" ry="2.5"/><ellipse cx="10" cy="6.5" rx="1.9" ry="2.5"/><ellipse cx="14" cy="6.5" rx="1.9" ry="2.5"/><ellipse cx="17.5" cy="9.5" rx="1.9" ry="2.5"/></svg>{%- endcapture -%}
+{{ 'pp-home.css' | asset_url | stylesheet_tag }}
+<section class="pp-section" id="bundles">
+  <div class="pp-wrap">
+    <div class="pp-head pp-head--center pp-reveal">
+      <p class="pp-eyebrow">Bundle and save</p>
+      <h2 class="pp-h2">{{ section.settings.heading }}</h2>
+      <p class="pp-lead">{{ section.settings.text }}</p>
+    </div>
+    <div class="pp-tiers pp-reveal">
+      <div class="pp-tier">
+        <div class="pp-tier__dogs">{{ dog }}</div>
+        <h3>1 suit · Recruit</h3>
+        <div class="pp-tier__price"><b>{{ base | money }}</b></div>
+        <p>One tiny soldier, ready for duty.</p>
+        <a href="{{ p.url }}" class="pp-btn pp-btn--ghost" data-pp-cta="bundle-1">Choose 1</a>
+      </div>
+      <div class="pp-tier">
+        <span class="pp-tier__ribbon pp-dogtag">Save 15%</span>
+        <div class="pp-tier__dogs">{{ dog }}{{ dog }}</div>
+        <h3>2 suits · Battle Buddies</h3>
+        <div class="pp-tier__price"><b>{{ t2 | money }}</b><s><span class="pp-sr">Price if bought one at a time: </span>{{ o2 | money }}</s></div>
+        <p>Two dogs at home, or one for a friend's pup. {{ t2 | divided_by: 2 | money }} each.</p>
+        <a href="{{ p.url }}?bundle=2" class="pp-btn pp-btn--ghost" data-pp-cta="bundle-2">Choose 2</a>
+      </div>
+      <div class="pp-tier pp-tier--best">
+        <span class="pp-tier__ribbon pp-dogtag">Best value · Save 25%</span>
+        <div class="pp-tier__dogs">{{ dog }}{{ dog }}{{ dog }}</div>
+        <h3>3 suits · The Squad</h3>
+        <div class="pp-tier__price"><b>{{ t3 | money }}</b><s><span class="pp-sr">Price if bought one at a time: </span>{{ o3 | money }}</s></div>
+        <p>The lowest price per suit: {{ t3 | divided_by: 3 | money }} each. Made for matching squad photos.</p>
+        <a href="{{ p.url }}?bundle=3" class="pp-btn" data-pp-cta="bundle-3">Choose 3</a>
+      </div>
+    </div>
+    <p class="pp-tiers-note">Mix any sizes. The discount applies automatically in your cart. 4+ suits stay 25% off.</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PP Bundles",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Got more than one pup? Suit up the squad." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Buy 2 and save 15%. Buy 3 or more and save 25% on every suit." }
+  ],
+  "presets": [{ "name": "PP Bundles" }]
+}
+{% endschema %}

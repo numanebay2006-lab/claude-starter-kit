@@ -1,0 +1,22 @@
+{%- liquid
+  assign pp_main = all_products['puppy-soldier-clothes-suit']
+  assign pp_prot = all_products['package-protection']
+  assign pp_prot_variant = pp_prot.selected_or_first_available_variant
+-%}
+<script>
+  window.PP_CFG = {
+    moneyFormat: {{ shop.money_format | strip_html | json }},
+    currency: {{ cart.currency.iso_code | json }},
+    mainProductId: {{ pp_main.id | default: 0 | json }},
+    productUrl: {{ pp_main.url | default: '/collections/all' | json }},
+    productImage: {{ pp_main.featured_image | image_url: width: 160 | json }},
+    protectionVariantId: {{ pp_prot_variant.id | default: 0 | json }},
+    protectionPrice: {{ pp_prot_variant.price | default: 300 | json }},
+    tiers: [{ qty: 2, pct: 15 }, { qty: 3, pct: 25 }],
+    upsellVariants: [
+      {%- for v in pp_main.variants -%}
+        { id: {{ v.id }}, title: {{ v.option1 | json }}, available: {{ v.available | json }}, price: {{ v.price | json }} }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  };
+</script>

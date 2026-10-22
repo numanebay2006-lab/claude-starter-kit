@@ -1,0 +1,36 @@
+{%- assign p = all_products['puppy-soldier-clothes-suit'] -%}
+{{ 'pp-home.css' | asset_url | stylesheet_tag }}
+<section class="pp-section pp-section--khaki">
+  <div class="pp-wrap">
+    <div class="pp-head pp-head--center pp-reveal">
+      <p class="pp-eyebrow">Real dogs, real sizes</p>
+      <h2 class="pp-h2">{{ section.settings.heading }}</h2>
+      <p class="pp-lead">{{ section.settings.text }}</p>
+    </div>
+    <div class="pp-strip">
+      {%- for m in p.media -%}
+        {%- if m.alt contains 'Louie' or m.alt contains 'Milo' or m.alt contains 'Three' or m.alt contains 'Dachshund' -%}
+          <figure>
+            {{ m | image_url: width: 700 | image_tag: loading: 'lazy', widths: '360, 540, 700', sizes: '(min-width: 990px) 25vw, 78vw', alt: m.alt }}
+            {%- if m.alt contains 'Milo' -%}<figcaption class="pp-tape">Milo · 6 lb Chihuahua · S</figcaption>
+            {%- elsif m.alt contains 'Louie' -%}<figcaption class="pp-tape">Louie · 22 lb Frenchie · M</figcaption>
+            {%- elsif m.alt contains 'Three' -%}<figcaption class="pp-tape">The whole squad</figcaption>
+            {%- else -%}<figcaption class="pp-tape">Dachshund on patrol</figcaption>{%- endif -%}
+          </figure>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    <p class="pp-center-cta"><a href="{{ p.url }}" class="pp-btn" data-pp-cta="photos">Get the suit · {{ p.price | money }}</a></p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PP Photo strip",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Reporting for duty" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Little dogs and big ones. Every pup gets the full uniform." }
+  ],
+  "presets": [{ "name": "PP Photo strip" }]
+}
+{% endschema %}
