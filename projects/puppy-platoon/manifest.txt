@@ -1,7 +1,7 @@
 085f036079bb785cbefd617d559ab0f9 23587 assets/pp-base.css
 75c7ff78804ebd30849070ff75bd84ca 14557 assets/pp-cart.js
 cdf2b88e4318070bb920fab0b77bb6e7 433 assets/pp-favicon.svg
-81fde964bb6da76220f48231cd878b9a 7718 assets/pp-game.js
+3fce320341f2c5e3536438f3a1be42a7 7720 assets/pp-game.js
 2de054a32f0cd6416ed007ee758f1101 11580 assets/pp-home.css
 c084f25214aee332b5649951d4d50687 13832 assets/pp-product.css
 11c5e5fe1a4df5d969bed78e47a1201e 12967 assets/pp-product.js

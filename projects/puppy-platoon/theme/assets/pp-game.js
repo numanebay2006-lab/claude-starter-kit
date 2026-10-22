@@ -75,7 +75,7 @@
       t.rot += 90 * dt;
       t.el.style.transform = `translate(${t.x}px, ${t.y}px) rotate(${t.rot}deg)`;
       const cx = t.x + 17, cy = t.y + 17;
-      if (cy > catchTop && cy < catchBottom && cx > px + 4 && cx < px + PW - 4) {
+      if (cy > catchTop && cy < catchBottom && cx > px + 16 && cx < px + PW - 16) {
         const pts = t.gold ? 2 : 1;
         score += pts;
         scoreEl.textContent = String(score);
