@@ -3,7 +3,7 @@
 cdf2b88e4318070bb920fab0b77bb6e7 433 assets/pp-favicon.svg
 3fce320341f2c5e3536438f3a1be42a7 7720 assets/pp-game.js
 2de054a32f0cd6416ed007ee758f1101 11580 assets/pp-home.css
-c084f25214aee332b5649951d4d50687 13832 assets/pp-product.css
+bcbdd19668942d71c08870bd5efff5ec 13840 assets/pp-product.css
 11c5e5fe1a4df5d969bed78e47a1201e 12967 assets/pp-product.js
 ea4ff952f76049c4ad3b41ce2848fc5b 7459 assets/pp-ui.js
 db9dccb4ceeef84c638ae70adb4d9aa6 962 config/settings_data.json
