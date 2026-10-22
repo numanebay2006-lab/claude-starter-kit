@@ -291,6 +291,28 @@ Varyant ID'leri: 2XL `67765307408632`, L `67765307441400`, M `67765307474168`, S
 
 ---
 
+## EK: Devir belgesinden sonra yapılanlar (2026-10-22 ~18:00 UTC) [D]
+
+- **Dil:** kullanıcı İngilizce'yi varsayılan yaptı (`en` primary + published). Çerez bandı İngilizce görünüyor.
+- **Menüler:** `main-menu` İngilizce (Shop the Suit, Size Guide, Bundles, FAQ, Track Order). `footer` menüsü İngilizce. Yeni: `footer-shop` (275817693432), `footer-help` (275817726200), `footer-policies` (275817758968). `customer-account-main-menu` güncellenemedi ("Customer account page must exist" hatası). Düşük öncelik.
+- **Ürün:** beden sırası S, M, L, XL, 2XL. "Color" seçeneği silindi; varyant başlıkları artık sadece beden, ID ve SKU'lar aynı, stok aynı. SEO başlık: "Puppy Soldier Dog Costume with Plush Arms | Puppy Platoon". SEO açıklamada "S-2XL" yazıyor. Açıklamadan "polyester" çıkarıldı. Kategoriler: Pet Costumes ve Shipping Insurance.
+- **Koleksiyon:** "Ana sayfa" adı "Home" yapıldı.
+- **Tema düzeltmeleri** (commit ve yükleme yapıldı, md5 eşleşiyor):
+  1. PDP mobil taşma düzeltildi: `.pp-pdp__grid { grid-template-columns: minmax(0,1fr) }` ve `.pp-gallery, .pp-buy { min-width:0 }`. 390 px'te scrollWidth artık 390.
+  2. Desktop galeri 96 px aşağı kayıyordu (sticky yerine relative kalmıştı). `.pp-pdp .pp-gallery { position: sticky }` ile düzeltildi.
+  3. Oyun zorlaştırıldı: 15 sn'de 10 kemik, yakalama alanı ortadaki 46 px.
+- **Tarayıcı testi** (US, önizleme) geçti:
+  - Beden seçimi, "Add 2 suits · $71.40", sepete ekle ve çekmece açılması.
+  - %15 indirim (tasarruf $12.60), ilerleme mesajı, upsell "+$23.10".
+  - Koruma anahtarı: açınca +$3 = $74.40, kapatınca kalkıyor, sepet sayacı 2 kalıyor.
+  - Sticky bar ("Add 2 · $71.40").
+  - Oyun: hareketsiz oynayınca kaybediyor. Skip → kod → "Applied!", TREAT10 geçerli ($42 → $37.80).
+  - Size guide, FAQ, track, contact, about ve 404 sayfaları hatasız, taşma yok.
+- **Son commit'ler:** `ddcf9bc`, `16c26a1`, `ca9d64f`, `3a1cca7` (hepsi push edildi).
+- **Hâlâ açık:** checkout kargo oranları (US "Ekonomi $5", diğerleri "Standart $3 / Hızlı $5"), politikalar, ödeme sağlayıcı kontrolü, mağaza adı, tema yayınlama. Hepsi admin işi. Marj kararı da bekliyor.
+
+---
+
 ## DEVAM TALİMATI (yeni oturuma yapıştır)
 
 ```
