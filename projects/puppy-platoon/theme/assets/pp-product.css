@@ -1,6 +1,7 @@
 /* Product page */
 .pp-pdp { padding: 0 0 40px; }
-.pp-pdp__grid { display: grid; gap: 20px; }
+.pp-pdp__grid { display: grid; gap: 20px; grid-template-columns: minmax(0, 1fr); }
+.pp-gallery, .pp-buy { min-width: 0; }
 @media (max-width: 989px) { .pp-pdp .pp-wrap.pp-pdp__grid { padding: 0; } .pp-buy { padding: 0 var(--pp-gutter); } }
 @media (min-width: 990px) {
   .pp-pdp { padding: 32px 0 72px; }
