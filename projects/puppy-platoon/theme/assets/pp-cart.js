@@ -157,7 +157,7 @@
     body.innerHTML = `${progressHTML()}<ul class="pp-lines">${items.map(lineHTML).join('')}</ul>${upsellHTML()}`;
     const savings = suitSavings();
     const applied = (cart.cart_level_discount_applications || []).map((d) => `<div class="pp-sum pp-sum--save"><span>Code ${esc(d.title)}</span><b>−${money(d.total_allocated_amount)}</b></div>`).join('');
-    const blocked = (cart.discount_codes || []).filter((d) => !d.applicable).map((d) => `<p class="pp-cart__note" style="text-align:left">Code ${esc(d.code)} needs a cart of $35 or more. It applies automatically once you reach it.</p>`).join('');
+    const blocked = (cart.discount_codes || []).filter((d) => !d.applicable).map((d) => `<p class="pp-cart__note" style="text-align:left">Code ${esc(d.code)} needs a cart of $70 or more. Add another suit and it applies automatically.</p>`).join('');
     const codes = applied + blocked;
     foot.hidden = false;
     foot.querySelector('[data-pp-protect-slot]').innerHTML = protectionHTML();

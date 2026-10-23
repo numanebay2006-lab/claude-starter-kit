@@ -171,7 +171,7 @@
       const c = (cart.discount_codes || []).find((d) => d.code.toUpperCase() === CODE.toUpperCase());
       if (!cart.item_count) msg.textContent = 'Saved! It applies once a suit is in your cart.';
       else if (c && c.applicable) msg.textContent = 'Applied! Your savings show in the cart.';
-      else msg.textContent = 'Saved! It applies at checkout on orders from $35.';
+      else msg.textContent = 'Saved! It applies on orders of $70 or more. Add a second suit to use it.';
       if (window.PPCart) { await window.PPCart.refresh(); if (cart.item_count) window.PPCart.open(); }
     } catch (err) {
       msg.textContent = `Use code ${CODE} at checkout.`;
