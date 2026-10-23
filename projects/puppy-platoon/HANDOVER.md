@@ -311,6 +311,18 @@ Varyant ID'leri: 2XL `67765307408632`, L `67765307441400`, M `67765307474168`, S
 - **Son commit'ler:** `ddcf9bc`, `16c26a1`, `ca9d64f`, `3a1cca7` (hepsi push edildi).
 - **Hâlâ açık:** checkout kargo oranları (US "Ekonomi $5", diğerleri "Standart $3 / Hızlı $5"), politikalar, ödeme sağlayıcı kontrolü, mağaza adı, tema yayınlama. Hepsi admin işi. Marj kararı da bekliyor.
 
+### EK 2 (2026-10-23) [D]
+- **Kargo düzeltildi** (kullanıcı admin'de pazar bazlı kargoyu düzenledi). `draftOrderAvailableDeliveryOptions` sonuçları:
+  - US / DE / TR: "Free Standart Shipping" $0.00 + "Express Shipping" **$3.00**.
+  - Kullanıcı Express'i $2.55 giremedi, $3 yaptı. Bu karar onun, kalıcı.
+- Sitedeki tüm "$2.55" metinleri "$3" yapıldı (tema + POLICIES.md). Commit `da58640`, 10 dosya yüklendi, md5'ler eşleşti.
+- Eski profil API oranları (Free $0 / Express $2.55) hâlâ General profile'da duruyor ama checkout bunları kullanmıyor.
+- **Açık kalanlar:**
+  - Admin'de oran adında yazım hatası: "Standart" yerine "Standard" olmalı.
+  - İki oranın teslimat süresi alanı boş (checkout'ta "5–7 business days" görünmüyor).
+  - Politikalar, ödeme kontrolü, mağaza adı, tema yayınlama.
+  - Marj kararı.
+
 ---
 
 ## DEVAM TALİMATI (yeni oturuma yapıştır)
