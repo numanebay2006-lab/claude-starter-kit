@@ -330,7 +330,7 @@ Varyant ID'leri: 2XL `67765307408632`, L `67765307441400`, M `67765307474168`, S
 - Sırada: ödeme → mağaza adı "Puppy Platoon" (checkout başlığı hâlâ "Mağazam") → politikalar → temayı yayınla → canlı test. Marj kararı da bekliyor.
 
 ### EK 4 (2026-10-23) [D]
-- **Kullanıcı kararı:** 2 takım %15, 3+ takım **%20** (önce %25'ti), TREAT10 kodu **%20** (önce %10'du; kod adı aynı kaldı).
+- **Kullanıcı kararı:** 2 takım %15, 3+ takım **%20** (önce %25'ti), TREAT10 kodu **%20** (önce %10).
 - İndirimler güncellendi: otomatik indirim `1581329481976` artık "The Squad: 20% off 3+ suits" (0.2). Kod `1581329514744` 0.2, min $35, bundle ile birleşiyor.
 - `draftOrderCalculate` ile doğrulandı:
   - 1 takım $42
@@ -339,6 +339,11 @@ Varyant ID'leri: 2XL `67765307408632`, L `67765307441400`, M `67765307474168`, S
   - 3 takım + TREAT10 $80.64 (−$45.36)
 - Tema metinleri ve config güncellendi (tiers `{qty:3,pct:20}`, Liquid'de `times: 80`, oyun "win 20% off"). Commit `4340b0f`, 11 dosya yüklendi, md5'ler eşleşiyor. Önizlemede görüldü: 3'lü paket "$100.80 · Save $25.20".
 - Storefront Cloudflare bot challenge veriyor; sepet testleri Admin `draftOrderCalculate` ile yapılıyor.
+
+### EK 5 (2026-10-23) [D]
+- Oyun ödül kodunun adı **TREAT20** yapıldı (`DiscountCodeNode/1581329514744`): %20, min $35, müşteri başına 1 kez. Eski TREAT10 artık geçersiz (doğrulandı).
+- Doğrulama: 1 takım + TREAT20 = $33.60. Tema `sections/pp-game.liquid` güncellendi, commit `207bd1d`, md5 eşleşiyor.
+- Belgenin önceki bölümlerinde "TREAT10" geçen yerler artık TREAT20 olarak okunmalı.
 
 ---
 
