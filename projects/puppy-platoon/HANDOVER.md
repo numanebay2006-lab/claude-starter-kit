@@ -323,6 +323,12 @@ Varyant ID'leri: 2XL `67765307408632`, L `67765307441400`, M `67765307474168`, S
   - Politikalar, ödeme kontrolü, mağaza adı, tema yayınlama.
   - Marj kararı.
 
+### EK 3 (2026-10-23) [D]
+- **Kargo tamamen doğru.** US, DE, TR ve GB'de checkout'ta "Free Standard Shipping" $0 (5 to 7 business days) ve "Express Shipping" $3 (3 to 5 business days) çıkıyor.
+- Site metinleri "Express 3–5 business days, $3" olarak güncellendi. Commit `3ee375b` yüklendi, md5'ler eşleşiyor.
+- **🚨 Ödeme yok.** Gerçek checkout'ta "This store can't accept payments right now." yazıyor. Kullanıcı Ayarlar → Ödemeler'den sağlayıcı eklemeli.
+- Sırada: ödeme → mağaza adı "Puppy Platoon" (checkout başlığı hâlâ "Mağazam") → politikalar → temayı yayınla → canlı test. Marj kararı da bekliyor.
+
 ---
 
 ## DEVAM TALİMATI (yeni oturuma yapıştır)
