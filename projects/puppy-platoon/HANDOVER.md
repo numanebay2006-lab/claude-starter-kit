@@ -345,6 +345,13 @@ Varyant ID'leri: 2XL `67765307408632`, L `67765307441400`, M `67765307474168`, S
 - Doğrulama: 1 takım + TREAT20 = $33.60. Tema `sections/pp-game.liquid` güncellendi, commit `207bd1d`, md5 eşleşiyor.
 - Belgenin önceki bölümlerinde "TREAT10" geçen yerler artık TREAT20 olarak okunmalı.
 
+### EK 6 (2026-10-23) [D]
+- TREAT20 minimum sepeti **$70** yapıldı (önce $35). İndirimler düştükten sonraki ara toplama göre çalışıyor:
+  - 1 takım ($42): kod uygulanmıyor
+  - 2 takım ($71.40 → $57.12): uygulanıyor
+  - 3 takım ($100.80 → $80.64): uygulanıyor
+- Tema metinleri güncellendi: oyun ("win 20% off orders of $70+", "orders of $70 or more (2+ suits)"), sepet notu ("needs a cart of $70 or more. Add another suit…"), oyunun uygula mesajı. Commit `6575346`, md5'ler eşleşiyor.
+
 ---
 
 ## DEVAM TALİMATI (yeni oturuma yapıştır)
