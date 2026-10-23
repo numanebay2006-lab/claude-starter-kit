@@ -36,7 +36,7 @@ We ship to the United States and worldwide.
 
 **Shipping options**
 - **Free Standard Shipping** on every order. Estimated delivery: 5–7 business days.
-- **Express Shipping**: $3. Priority handling and tracking.
+- **Express Shipping**: $3. Estimated delivery: 3–5 business days, tracked.
 
 Delivery times are estimates, start when your order ships and exclude weekends and public holidays. Remote areas and customs checks can add time.
 

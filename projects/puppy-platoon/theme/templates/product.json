@@ -54,7 +54,7 @@
           "type": "qa",
           "settings": {
             "q": "Do you offer express shipping?",
-            "a": "<p>Yes. Choose Express at checkout for $3. It gets priority processing and tracking.</p>"
+            "a": "<p>Yes. Choose Express at checkout for $3. It arrives in 3–5 business days with tracking.</p>"
           }
         },
         "q7": {
