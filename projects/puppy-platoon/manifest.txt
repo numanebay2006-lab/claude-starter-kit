@@ -18,7 +18,7 @@ e1e3d13010f0929e733837532fcc2037 1743 sections/pp-contact.liquid
 84800c7b8b9c60277610b4fd533a11f3 1661 sections/pp-faq.liquid
 92962f8b9059f191cdbbc365b013e337 1756 sections/pp-final.liquid
 e875720da4d417b3646c4a233818a85f 3427 sections/pp-footer.liquid
-61bd7d7a36f7bc5e9d79ca8e1c74875f 6010 sections/pp-game.liquid
+224a2dfebb0eb3c4eca58c1625da3ca2 6010 sections/pp-game.liquid
 432ff2554e986b59d5b2cfcb9a689ae0 3030 sections/pp-header.liquid
 54c575f52110bceb79cbc5a4e510f479 3770 sections/pp-hero.liquid
 1e826575c37dbf4739f2f181b221bda1 3324 sections/pp-occasions.liquid
