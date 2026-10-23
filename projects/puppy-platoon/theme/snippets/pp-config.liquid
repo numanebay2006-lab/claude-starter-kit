@@ -12,7 +12,7 @@
     productImage: {{ pp_main.featured_image | image_url: width: 160 | json }},
     protectionVariantId: {{ pp_prot_variant.id | default: 0 | json }},
     protectionPrice: {{ pp_prot_variant.price | default: 300 | json }},
-    tiers: [{ qty: 2, pct: 15 }, { qty: 3, pct: 25 }],
+    tiers: [{ qty: 2, pct: 15 }, { qty: 3, pct: 20 }],
     upsellVariants: [
       {%- for v in pp_main.variants -%}
         { id: {{ v.id }}, title: {{ v.option1 | json }}, available: {{ v.available | json }}, price: {{ v.price | json }} }{% unless forloop.last %},{% endunless %}

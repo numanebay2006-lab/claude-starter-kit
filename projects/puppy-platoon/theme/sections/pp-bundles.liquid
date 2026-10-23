@@ -2,7 +2,7 @@
   assign p = all_products['puppy-soldier-clothes-suit']
   assign base = p.price
   assign t2 = base | times: 2 | times: 85 | divided_by: 100
-  assign t3 = base | times: 3 | times: 75 | divided_by: 100
+  assign t3 = base | times: 3 | times: 80 | divided_by: 100
   assign o2 = base | times: 2
   assign o3 = base | times: 3
 -%}
@@ -32,7 +32,7 @@
         <a href="{{ p.url }}?bundle=2" class="pp-btn pp-btn--ghost" data-pp-cta="bundle-2">Choose 2</a>
       </div>
       <div class="pp-tier pp-tier--best">
-        <span class="pp-tier__ribbon pp-dogtag">Best value · Save 25%</span>
+        <span class="pp-tier__ribbon pp-dogtag">Best value · Save 20%</span>
         <div class="pp-tier__dogs">{{ dog }}{{ dog }}{{ dog }}</div>
         <h3>3 suits · The Squad</h3>
         <div class="pp-tier__price"><b>{{ t3 | money }}</b><s><span class="pp-sr">Price if bought one at a time: </span>{{ o3 | money }}</s></div>
@@ -40,7 +40,7 @@
         <a href="{{ p.url }}?bundle=3" class="pp-btn" data-pp-cta="bundle-3">Choose 3</a>
       </div>
     </div>
-    <p class="pp-tiers-note">Mix any sizes. The discount applies automatically in your cart. 4+ suits stay 25% off.</p>
+    <p class="pp-tiers-note">Mix any sizes. The discount applies automatically in your cart. 4+ suits stay 20% off.</p>
   </div>
 </section>
 
@@ -49,7 +49,7 @@
   "name": "PP Bundles",
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "Got more than one pup? Suit up the squad." },
-    { "type": "textarea", "id": "text", "label": "Text", "default": "Buy 2 and save 15%. Buy 3 or more and save 25% on every suit." }
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Buy 2 and save 15%. Buy 3 or more and save 20% on every suit." }
   ],
   "presets": [{ "name": "PP Bundles" }]
 }

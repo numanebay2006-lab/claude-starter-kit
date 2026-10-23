@@ -82,7 +82,7 @@
           "type": "qa",
           "settings": {
             "q": "How do bundle discounts work?",
-            "a": "<p>Buy 2 suits and save 15%. Buy 3 or more and save 25% on every suit. Mix any sizes. The discount applies automatically in your cart.</p>"
+            "a": "<p>Buy 2 suits and save 15%. Buy 3 or more and save 20% on every suit. Mix any sizes. The discount applies automatically in your cart.</p>"
           }
         },
         "q11": {

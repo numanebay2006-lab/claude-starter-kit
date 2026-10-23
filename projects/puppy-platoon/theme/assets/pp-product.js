@@ -3,7 +3,7 @@
   const root = document.querySelector('[data-pp-pdp]');
   if (!root) return;
   const cfg = window.PP_CFG || {};
-  const TIERS = cfg.tiers || [{ qty: 2, pct: 15 }, { qty: 3, pct: 25 }];
+  const TIERS = cfg.tiers || [{ qty: 2, pct: 15 }, { qty: 3, pct: 20 }];
   const variants = JSON.parse(root.querySelector('[data-pp-variants]').textContent);
   const sizes = JSON.parse(root.querySelector('[data-pp-sizes]').textContent);
   const $ = (s) => root.querySelector(s);
@@ -96,7 +96,7 @@
   qtyRadios.forEach((r) => r.addEventListener('change', () => {
     state.qty = Number(r.value);
     if (state.qty === 2) speak('Battle Buddies! 15% off both suits.');
-    if (state.qty === 3) speak('A full squad! 25% off every suit.');
+    if (state.qty === 3) speak('A full squad! 20% off every suit.');
     render();
   }));
   $$('[data-pp-extra-select]').forEach((sel) => sel.addEventListener('change', () => { sel.dataset.touched = '1'; }));

@@ -3,7 +3,7 @@
   const cfg = window.PP_CFG || {};
   const PROTECT_ID = Number(cfg.protectionVariantId);
   const MAIN_PRODUCT_ID = Number(cfg.mainProductId);
-  const TIERS = cfg.tiers || [{ qty: 2, pct: 15 }, { qty: 3, pct: 25 }];
+  const TIERS = cfg.tiers || [{ qty: 2, pct: 15 }, { qty: 3, pct: 20 }];
   const root = () => document.getElementById('pp-cart');
   const money = (cents) => {
     const fmt = cfg.moneyFormat || '${{amount}}';
